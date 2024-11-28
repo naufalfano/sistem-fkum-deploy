@@ -21,7 +21,7 @@
         <path clip-rule="evenodd" fill-rule="evenodd" d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"></path>
       </svg>
     </button>
-
+    {% comment %}Sidebar{% endcomment %}
     <aside id="default-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
       <div class="h-full px-3 py-4 mt-1 overflow-y-auto bg-white flex flex-col justify-between">
         <div class="flex flex-col gap-6">
@@ -56,7 +56,6 @@
             </a>
           </ul>
         </div>
-
         <div class="px-3 py-1 mb-2 border-2 rounded-[8px] flex justify-between items-center">
           <div class="flex flex-col">
             <span class="text-slate-800 text-[11px] font-medium font-['Inter'] leading-normal">Nama</span>
@@ -70,9 +69,63 @@
         </div>
       </div>
     </aside>
-
-    <div class="p-4 sm:ml-64">
-      <div class="text-slate-700 text-2xl font-semibold font-['Inter'] leading-loose">Aplikasi Prediksi dan Sistem Pakar Kelulusan UKMPPD</div>
+    {% comment %}Title{% endcomment %}
+    <div class="p-4 gap-y-8 sm:ml-64 mr-7 ps-7 flex flex-col">
+      <div class="flex items-center justify-between">
+        <span class="text-slate-700 text-2xl font-semibold font-['Inter'] leading-loose">Aplikasi Prediksi dan Sistem Pakar Kelulusan UKMPPD</span>
+        <button type="button" class="bg-[#1a56db] rounded-lg justify-center items-center flex gap-3 px-5 h-[37px]">
+          <span class="text-white text-sm font-base font-['Inter'] leading-[21px]">Unggah Nilai Mahasiswa</span>
+          <svg class="w-5 h-5 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="none" viewBox="0 0 24 24">
+            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7 7V5" />
+          </svg>
+        </button>
+      </div>
+      {% comment %}Banner Sign{% endcomment %}
+      <div class="p-3 px-4 flex flex-col gap-y-1 bg-[#e1effe] rounded-xl">
+        <div class="inline-flex items-center gap-2">
+          <svg class="w-4 h-4 text-[#1a56db]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 24 24">
+            <path fill-rule="evenodd" d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm9.408-5.5a1 1 0 1 0 0 2h.01a1 1 0 1 0 0-2h-.01ZM10 10a1 1 0 1 0 0 2h1v3h-1a1 1 0 1 0 0 2h4a1 1 0 1 0 0-2h-1v-4a1 1 0 0 0-1-1h-2Z" clip-rule="evenodd" />
+          </svg>
+          <span class="text-[#1a56db] text-base font-semibold font-['Inter'] leading-normal">Informasi</span>
+        </div>
+        <span class="text-[#1a56db] text-sm font-normal font-['Inter'] leading-[21px]">Sistem ini dapat melakukan prediksi kelulusan mahasiswa pada ujian UKMPPD percobaan pertama. Prediksi kelulusan hanya dilakukan pada aspek kognitif.</span>
+      </div>
+      {% comment %}Card{% endcomment %}
+      <div class="flex flex-col gap-4">
+        {% comment %} Header {% endcomment %}
+        <div class="flex justify-between">
+          <span class="text-slate-600 text-lg font-medium font-['Inter'] leading-7">Data Prediksi Kelulusan UKMPPD</span>
+          <a href="" class="text-blue-600 text-sm font-semibold font-['Inter'] leading-normal items-center">Lihat Semua</a>
+        </div>
+        {% comment %} Card {% endcomment %}
+        <div class="grid md:grid-cols-2 gap-14">
+          {% comment %}CARD ONE{% endcomment %}
+          <div class="flex gap-x-4 items-center bg-white shadow p-7 rounded-lg">
+            <svg class="w-12 h-12 text-green-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+              <path d="M9 7V2.221a2 2 0 0 0-.5.365L4.586 6.5a2 2 0 0 0-.365.5H9Z" />
+              <path fill-rule="evenodd" d="M11 7V2h7a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9h5a2 2 0 0 0 2-2Zm4.707 5.707a1 1 0 0 0-1.414-1.414L11 14.586l-1.293-1.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4Z" clip-rule="evenodd" />
+            </svg>
+            <div class="flex flex-col justify-start items-start gap-1">
+              <span class="text-slate-500 text-[16px] leading-snug">Prediksi Mahasiswa Lulus</span>
+              <span class="text-[30px] font-bold leading-none">150</span>
+            </div>
+          </div>
+          {% comment %}CARD TWO{% endcomment %}
+          <div class="flex gap-x-4 items-center bg-white shadow p-7 rounded-lg">
+            <svg class="w-12 h-12 text-red-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.651 7.65a7.131 7.131 0 0 0-12.68 3.15M18.001 4v4h-4m-7.652 8.35a7.13 7.13 0 0 0 12.68-3.15M6 20v-4h4" />
+            </svg>
+            <div class="flex flex-col justify-start items-start gap-1">
+              <span class="text-slate-500 text-[16px] leading-snug">Prediksi Mahasiswa Retake</span>
+              <span class="text-[30px] font-bold leading-none">6</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      {% comment %} Tabel Nilai {% endcomment %}
+      <div class="h-screen">
+        Test
+      </div>
     </div>
   </body>
 </html>
