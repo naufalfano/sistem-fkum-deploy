@@ -40,6 +40,7 @@ INSTALLED_APPS = [
     'tailwind',
     'theme',
     'users',
+    'dataUKMPPD'
 ]
 
 TAILWIND_APP_NAME = 'theme'
