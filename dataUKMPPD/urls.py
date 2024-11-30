@@ -3,4 +3,5 @@ from . import views
 
 urlpatterns = [
     path('', views.dashboardUKMPPD),
+    path('form-ukmppd/', views.uploadUKMPPD)
 ]
