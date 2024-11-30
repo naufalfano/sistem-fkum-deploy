@@ -14,7 +14,7 @@
     {% tailwind_css %}
   </head>
 
-  <body class="bg-slate-100">
+  <body class="bg-slate-100 font-['Inter']">
 
     {% comment %} Sidebar {% endcomment %}
     <aside id="default-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
@@ -113,188 +113,265 @@
         </div>
       </div>
       {% comment %} Tabel Nilai {% endcomment %}
-      <div class="h-screen">
-        <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
-            <div class="pb-4 bg-white dark:bg-gray-900">
-                <label for="table-search" class="sr-only">Search</label>
-                <div class="relative mt-1">
-                    <div class="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
-                        <svg class="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
-                        </svg>
-                    </div>
-                    <input type="text" id="table-search" class="block pt-2 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for items">
-                </div>
+      <div class="grid grid-cols-4 gap-2">
+        <div class="col-span-2">         
+          <div class="w-full max-w-sm min-w-[200px]">
+            <div class="relative flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="absolute w-5 h-5 top-2.5 left-2.5 text-slate-600">
+                <path fill-rule="evenodd" d="M10.5 3.75a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM2.25 10.5a8.25 8.25 0 1 1 14.59 5.28l4.69 4.69a.75.75 0 1 1-1.06 1.06l-4.69-4.69A8.25 8.25 0 0 1 2.25 10.5Z" clip-rule="evenodd" />
+              </svg>
+              <input
+              class="w-full bg-white placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-lg pl-10 pr-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300"
+              placeholder="Cari nama mahasiswa disini"/>
+              <button
+                class="rounded-lg bg-blue-600 py-2 px-4 border border-transparent text-center text-sm text-white focus:bg-blue-700 focus:shadow-none active:bg-blue-700 hover:bg-blue-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 ml-2"
+                type="button">
+                Search
+              </button> 
             </div>
-            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
-                <thead class="text-xs text-gray-700 uppercase bg-gray-50 dark:bg-gray-700 dark:text-gray-400">
-                    <tr>
-                        <th scope="col" class="p-4">
-                            <div class="flex items-center">
-                                <input id="checkbox-all-search" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                <label for="checkbox-all-search" class="sr-only">checkbox</label>
-                            </div>
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Product name
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Color
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Category
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Price
-                        </th>
-                        <th scope="col" class="px-6 py-3">
-                            Action
-                        </th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                        <td class="w-4 p-4">
-                            <div class="flex items-center">
-                                <input id="checkbox-table-search-1" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                <label for="checkbox-table-search-1" class="sr-only">checkbox</label>
-                            </div>
-                        </td>
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            Apple MacBook Pro 17"
-                        </th>
-                        <td class="px-6 py-4">
-                            Silver
-                        </td>
-                        <td class="px-6 py-4">
-                            Laptop
-                        </td>
-                        <td class="px-6 py-4">
-                            $2999
-                        </td>
-                        <td class="px-6 py-4">
-                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                        <td class="w-4 p-4">
-                            <div class="flex items-center">
-                                <input id="checkbox-table-search-2" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                <label for="checkbox-table-search-2" class="sr-only">checkbox</label>
-                            </div>
-                        </td>
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            Microsoft Surface Pro
-                        </th>
-                        <td class="px-6 py-4">
-                            White
-                        </td>
-                        <td class="px-6 py-4">
-                            Laptop PC
-                        </td>
-                        <td class="px-6 py-4">
-                            $1999
-                        </td>
-                        <td class="px-6 py-4">
-                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                        <td class="w-4 p-4">
-                            <div class="flex items-center">
-                                <input id="checkbox-table-search-3" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                <label for="checkbox-table-search-3" class="sr-only">checkbox</label>
-                            </div>
-                        </td>
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            Magic Mouse 2
-                        </th>
-                        <td class="px-6 py-4">
-                            Black
-                        </td>
-                        <td class="px-6 py-4">
-                            Accessories
-                        </td>
-                        <td class="px-6 py-4">
-                            $99
-                        </td>
-                        <td class="px-6 py-4">
-                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                        <td class="w-4 p-4">
-                            <div class="flex items-center">
-                                <input id="checkbox-table-3" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                <label for="checkbox-table-3" class="sr-only">checkbox</label>
-                            </div>
-                        </td>
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            Apple Watch
-                        </th>
-                        <td class="px-6 py-4">
-                            Silver
-                        </td>
-                        <td class="px-6 py-4">
-                            Accessories
-                        </td>
-                        <td class="px-6 py-4">
-                            $179
-                        </td>
-                        <td class="px-6 py-4">
-                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                        </td>
-                    </tr>
-                    <tr class="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
-                        <td class="w-4 p-4">
-                            <div class="flex items-center">
-                                <input id="checkbox-table-3" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                <label for="checkbox-table-3" class="sr-only">checkbox</label>
-                            </div>
-                        </td>
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            iPad
-                        </th>
-                        <td class="px-6 py-4">
-                            Gold
-                        </td>
-                        <td class="px-6 py-4">
-                            Tablet
-                        </td>
-                        <td class="px-6 py-4">
-                            $699
-                        </td>
-                        <td class="px-6 py-4">
-                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                        </td>
-                    </tr>
-                    <tr class="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
-                        <td class="w-4 p-4">
-                            <div class="flex items-center">
-                                <input id="checkbox-table-3" type="checkbox" class="w-4 h-4 text-blue-600 bg-gray-100 border-gray-300 rounded focus:ring-blue-500 dark:focus:ring-blue-600 dark:ring-offset-gray-800 dark:focus:ring-offset-gray-800 focus:ring-2 dark:bg-gray-700 dark:border-gray-600">
-                                <label for="checkbox-table-3" class="sr-only">checkbox</label>
-                            </div>
-                        </td>
-                        <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
-                            Apple iMac 27"
-                        </th>
-                        <td class="px-6 py-4">
-                            Silver
-                        </td>
-                        <td class="px-6 py-4">
-                            PC Desktop
-                        </td>
-                        <td class="px-6 py-4">
-                            $3999
-                        </td>
-                        <td class="px-6 py-4">
-                            <a href="#" class="font-medium text-blue-600 dark:text-blue-500 hover:underline">Edit</a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+          </div>
         </div>
+        <div class="col-start-4 justify-end inline-flex gap-2">
+          <form class="max-w-md">
+            <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-4 py-2">
+              <option selected>Semua Periode</option>
+              <option value="US">Februari 2024</option>
+              <option value="CA">Februari 2024</option>
+              <option value="FR">Februari 2024</option>
+              <option value="DE">Februari 2024</option>
+            </select>
+          </form>
+          <form class="max-w-md">
+            <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-4 py-2">
+              <option selected>Semua Status</option>
+              <option value="US">Lulus</option>
+              <option value="CA">Retake</option>
+            </select>
+          </form>
+        </div>
+      </div>
 
+      <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+        <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+          <thead class="text-xs uppercase bg-slate-50 border-b">
+            <tr>
+              <th scope="col" class="p-4">NIM</th>
+              <th scope="col" class="px-6 py-3">Nama Mahasiswa</th>
+              <th scope="col" class="px-6 py-3">Tahun Ajaran</th>
+              <th scope="col" class="px-6 py-3">Periode UKMPPD</th>
+              <th scope="col" class="px-6 py-3">Hasil UKMPPD</th>
+              <th scope="col" class="px-6 py-3"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr class="bg-white border-b hover:bg-gray-200">
+              <td class="w-4 p-4">123123123</td>
+              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Muhammad Andi</th>
+              <td class="px-6 py-4">Genap 2024/2025</td>
+              <td class="px-6 py-4">Februari 2024</td>
+              <td class="px-6 py-4">
+                <span class="bg-green-100 text-green-800 border-green-300 font-['Inter'] text-xs font-medium me-2 px-2.5 py-0.5 rounded">Lulus</span>
+              </td>
+              <td class="px-4 py-4">
+                <a href="#" class="font-medium hover:underline">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11 3C10.4477 3 10 3.44772 10 4C10 4.55228 10.4477 5 11 5H13.5858L7.29289 11.2929C6.90237 11.6834 6.90237 12.3166 7.29289 12.7071C7.68342 13.0976 8.31658 13.0976 8.70711 12.7071L15 6.41421V9C15 9.55228 15.4477 10 16 10C16.5523 10 17 9.55228 17 9V4C17 3.44772 16.5523 3 16 3H11Z" fill="#94A3B8" />
+                    <path d="M5 5C3.89543 5 3 5.89543 3 7V15C3 16.1046 3.89543 17 5 17H13C14.1046 17 15 16.1046 15 15V12C15 11.4477 14.5523 11 14 11C13.4477 11 13 11.4477 13 12V15H5V7L8 7C8.55228 7 9 6.55228 9 6C9 5.44772 8.55228 5 8 5H5Z" fill="#94A3B8" />
+                  </svg>
+                </a>
+              </td>
+            </tr>
+            <tr class="bg-white border-b hover:bg-gray-200">
+              <td class="w-4 p-4">123123123</td>
+              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Muhammad Andi</th>
+              <td class="px-6 py-4">Genap 2024/2025</td>
+              <td class="px-6 py-4">Februari 2024</td>
+              <td class="px-6 py-4">
+                <span class="bg-red-100 text-red-800 border-red-300 font-['Inter'] text-xs font-medium me-2 px-2.5 py-0.5 rounded">Retake</span>
+              </td>
+              <td class="px-4 py-4">
+                <a href="#" class="font-medium hover:underline">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11 3C10.4477 3 10 3.44772 10 4C10 4.55228 10.4477 5 11 5H13.5858L7.29289 11.2929C6.90237 11.6834 6.90237 12.3166 7.29289 12.7071C7.68342 13.0976 8.31658 13.0976 8.70711 12.7071L15 6.41421V9C15 9.55228 15.4477 10 16 10C16.5523 10 17 9.55228 17 9V4C17 3.44772 16.5523 3 16 3H11Z" fill="#94A3B8" />
+                    <path d="M5 5C3.89543 5 3 5.89543 3 7V15C3 16.1046 3.89543 17 5 17H13C14.1046 17 15 16.1046 15 15V12C15 11.4477 14.5523 11 14 11C13.4477 11 13 11.4477 13 12V15H5V7L8 7C8.55228 7 9 6.55228 9 6C9 5.44772 8.55228 5 8 5H5Z" fill="#94A3B8" />
+                  </svg>
+                </a>
+              </td>
+            </tr>
+            <tr class="bg-white border-b hover:bg-gray-200">
+              <td class="w-4 p-4">123123123</td>
+              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Muhammad Andi</th>
+              <td class="px-6 py-4">Genap 2024/2025</td>
+              <td class="px-6 py-4">Februari 2024</td>
+              <td class="px-6 py-4">
+                <span class="bg-green-100 text-green-800 border-green-300 font-['Inter'] text-xs font-medium me-2 px-2.5 py-0.5 rounded">Lulus</span>
+              </td>
+              <td class="px-4 py-4">
+                <a href="#" class="font-medium hover:underline">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11 3C10.4477 3 10 3.44772 10 4C10 4.55228 10.4477 5 11 5H13.5858L7.29289 11.2929C6.90237 11.6834 6.90237 12.3166 7.29289 12.7071C7.68342 13.0976 8.31658 13.0976 8.70711 12.7071L15 6.41421V9C15 9.55228 15.4477 10 16 10C16.5523 10 17 9.55228 17 9V4C17 3.44772 16.5523 3 16 3H11Z" fill="#94A3B8" />
+                    <path d="M5 5C3.89543 5 3 5.89543 3 7V15C3 16.1046 3.89543 17 5 17H13C14.1046 17 15 16.1046 15 15V12C15 11.4477 14.5523 11 14 11C13.4477 11 13 11.4477 13 12V15H5V7L8 7C8.55228 7 9 6.55228 9 6C9 5.44772 8.55228 5 8 5H5Z" fill="#94A3B8" />
+                  </svg>
+                </a>
+              </td>
+            </tr>
+            <tr class="bg-white border-b hover:bg-gray-200">
+              <td class="w-4 p-4">123123123</td>
+              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Muhammad Andi</th>
+              <td class="px-6 py-4">Genap 2024/2025</td>
+              <td class="px-6 py-4">Februari 2024</td>
+              <td class="px-6 py-4">
+                <span class="bg-green-100 text-green-800 border-green-300 font-['Inter'] text-xs font-medium me-2 px-2.5 py-0.5 rounded">Lulus</span>
+              </td>
+              <td class="px-4 py-4">
+                <a href="#" class="font-medium hover:underline">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11 3C10.4477 3 10 3.44772 10 4C10 4.55228 10.4477 5 11 5H13.5858L7.29289 11.2929C6.90237 11.6834 6.90237 12.3166 7.29289 12.7071C7.68342 13.0976 8.31658 13.0976 8.70711 12.7071L15 6.41421V9C15 9.55228 15.4477 10 16 10C16.5523 10 17 9.55228 17 9V4C17 3.44772 16.5523 3 16 3H11Z" fill="#94A3B8" />
+                    <path d="M5 5C3.89543 5 3 5.89543 3 7V15C3 16.1046 3.89543 17 5 17H13C14.1046 17 15 16.1046 15 15V12C15 11.4477 14.5523 11 14 11C13.4477 11 13 11.4477 13 12V15H5V7L8 7C8.55228 7 9 6.55228 9 6C9 5.44772 8.55228 5 8 5H5Z" fill="#94A3B8" />
+                  </svg>
+                </a>
+              </td>
+            </tr>
+            <tr class="bg-white border-b hover:bg-gray-200">
+              <td class="w-4 p-4">123123123</td>
+              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Muhammad Andi</th>
+              <td class="px-6 py-4">Genap 2024/2025</td>
+              <td class="px-6 py-4">Februari 2024</td>
+              <td class="px-6 py-4">
+                <span class="bg-green-100 text-green-800 border-green-300 font-['Inter'] text-xs font-medium me-2 px-2.5 py-0.5 rounded">Lulus</span>
+              </td>
+              <td class="px-4 py-4">
+                <a href="#" class="font-medium hover:underline">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11 3C10.4477 3 10 3.44772 10 4C10 4.55228 10.4477 5 11 5H13.5858L7.29289 11.2929C6.90237 11.6834 6.90237 12.3166 7.29289 12.7071C7.68342 13.0976 8.31658 13.0976 8.70711 12.7071L15 6.41421V9C15 9.55228 15.4477 10 16 10C16.5523 10 17 9.55228 17 9V4C17 3.44772 16.5523 3 16 3H11Z" fill="#94A3B8" />
+                    <path d="M5 5C3.89543 5 3 5.89543 3 7V15C3 16.1046 3.89543 17 5 17H13C14.1046 17 15 16.1046 15 15V12C15 11.4477 14.5523 11 14 11C13.4477 11 13 11.4477 13 12V15H5V7L8 7C8.55228 7 9 6.55228 9 6C9 5.44772 8.55228 5 8 5H5Z" fill="#94A3B8" />
+                  </svg>
+                </a>
+              </td>
+            </tr>
+            <tr class="bg-white border-b hover:bg-gray-200">
+              <td class="w-4 p-4">123123123</td>
+              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Muhammad Andi</th>
+              <td class="px-6 py-4">Genap 2024/2025</td>
+              <td class="px-6 py-4">Februari 2024</td>
+              <td class="px-6 py-4">
+                <span class="bg-green-100 text-green-800 border-green-300 font-['Inter'] text-xs font-medium me-2 px-2.5 py-0.5 rounded">Lulus</span>
+              </td>
+              <td class="px-4 py-4">
+                <a href="#" class="font-medium hover:underline">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11 3C10.4477 3 10 3.44772 10 4C10 4.55228 10.4477 5 11 5H13.5858L7.29289 11.2929C6.90237 11.6834 6.90237 12.3166 7.29289 12.7071C7.68342 13.0976 8.31658 13.0976 8.70711 12.7071L15 6.41421V9C15 9.55228 15.4477 10 16 10C16.5523 10 17 9.55228 17 9V4C17 3.44772 16.5523 3 16 3H11Z" fill="#94A3B8" />
+                    <path d="M5 5C3.89543 5 3 5.89543 3 7V15C3 16.1046 3.89543 17 5 17H13C14.1046 17 15 16.1046 15 15V12C15 11.4477 14.5523 11 14 11C13.4477 11 13 11.4477 13 12V15H5V7L8 7C8.55228 7 9 6.55228 9 6C9 5.44772 8.55228 5 8 5H5Z" fill="#94A3B8" />
+                  </svg>
+                </a>
+              </td>
+            </tr>
+            <tr class="bg-white border-b hover:bg-gray-200">
+              <td class="w-4 p-4">123123123</td>
+              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Muhammad Andi</th>
+              <td class="px-6 py-4">Genap 2024/2025</td>
+              <td class="px-6 py-4">Februari 2024</td>
+              <td class="px-6 py-4">
+                <span class="bg-green-100 text-green-800 border-green-300 font-['Inter'] text-xs font-medium me-2 px-2.5 py-0.5 rounded">Lulus</span>
+              </td>
+              <td class="px-4 py-4">
+                <a href="#" class="font-medium hover:underline">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11 3C10.4477 3 10 3.44772 10 4C10 4.55228 10.4477 5 11 5H13.5858L7.29289 11.2929C6.90237 11.6834 6.90237 12.3166 7.29289 12.7071C7.68342 13.0976 8.31658 13.0976 8.70711 12.7071L15 6.41421V9C15 9.55228 15.4477 10 16 10C16.5523 10 17 9.55228 17 9V4C17 3.44772 16.5523 3 16 3H11Z" fill="#94A3B8" />
+                    <path d="M5 5C3.89543 5 3 5.89543 3 7V15C3 16.1046 3.89543 17 5 17H13C14.1046 17 15 16.1046 15 15V12C15 11.4477 14.5523 11 14 11C13.4477 11 13 11.4477 13 12V15H5V7L8 7C8.55228 7 9 6.55228 9 6C9 5.44772 8.55228 5 8 5H5Z" fill="#94A3B8" />
+                  </svg>
+                </a>
+              </td>
+            </tr>
+            <tr class="bg-white border-b hover:bg-gray-200">
+              <td class="w-4 p-4">123123123</td>
+              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Muhammad Andi</th>
+              <td class="px-6 py-4">Genap 2024/2025</td>
+              <td class="px-6 py-4">Februari 2024</td>
+              <td class="px-6 py-4">
+                <span class="bg-green-100 text-green-800 border-green-300 font-['Inter'] text-xs font-medium me-2 px-2.5 py-0.5 rounded">Lulus</span>
+              </td>
+              <td class="px-4 py-4">
+                <a href="#" class="font-medium hover:underline">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11 3C10.4477 3 10 3.44772 10 4C10 4.55228 10.4477 5 11 5H13.5858L7.29289 11.2929C6.90237 11.6834 6.90237 12.3166 7.29289 12.7071C7.68342 13.0976 8.31658 13.0976 8.70711 12.7071L15 6.41421V9C15 9.55228 15.4477 10 16 10C16.5523 10 17 9.55228 17 9V4C17 3.44772 16.5523 3 16 3H11Z" fill="#94A3B8" />
+                    <path d="M5 5C3.89543 5 3 5.89543 3 7V15C3 16.1046 3.89543 17 5 17H13C14.1046 17 15 16.1046 15 15V12C15 11.4477 14.5523 11 14 11C13.4477 11 13 11.4477 13 12V15H5V7L8 7C8.55228 7 9 6.55228 9 6C9 5.44772 8.55228 5 8 5H5Z" fill="#94A3B8" />
+                  </svg>
+                </a>
+              </td>
+            </tr>
+            <tr class="bg-white border-b hover:bg-gray-200">
+              <td class="w-4 p-4">123123123</td>
+              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Muhammad Andi</th>
+              <td class="px-6 py-4">Genap 2024/2025</td>
+              <td class="px-6 py-4">Februari 2024</td>
+              <td class="px-6 py-4">
+                <span class="bg-green-100 text-green-800 border-green-300 font-['Inter'] text-xs font-medium me-2 px-2.5 py-0.5 rounded">Lulus</span>
+              </td>
+              <td class="px-4 py-4">
+                <a href="#" class="font-medium hover:underline">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11 3C10.4477 3 10 3.44772 10 4C10 4.55228 10.4477 5 11 5H13.5858L7.29289 11.2929C6.90237 11.6834 6.90237 12.3166 7.29289 12.7071C7.68342 13.0976 8.31658 13.0976 8.70711 12.7071L15 6.41421V9C15 9.55228 15.4477 10 16 10C16.5523 10 17 9.55228 17 9V4C17 3.44772 16.5523 3 16 3H11Z" fill="#94A3B8" />
+                    <path d="M5 5C3.89543 5 3 5.89543 3 7V15C3 16.1046 3.89543 17 5 17H13C14.1046 17 15 16.1046 15 15V12C15 11.4477 14.5523 11 14 11C13.4477 11 13 11.4477 13 12V15H5V7L8 7C8.55228 7 9 6.55228 9 6C9 5.44772 8.55228 5 8 5H5Z" fill="#94A3B8" />
+                  </svg>
+                </a>
+              </td>
+            </tr>
+            <tr class="bg-white border-b hover:bg-gray-200">
+              <td class="w-4 p-4">123123123</td>
+              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Muhammad Andi</th>
+              <td class="px-6 py-4">Genap 2024/2025</td>
+              <td class="px-6 py-4">Februari 2024</td>
+              <td class="px-6 py-4">
+                <span class="bg-green-100 text-green-800 border-green-300 font-['Inter'] text-xs font-medium me-2 px-2.5 py-0.5 rounded">Lulus</span>
+              </td>
+              <td class="px-4 py-4">
+                <a href="#" class="font-medium hover:underline">
+                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M11 3C10.4477 3 10 3.44772 10 4C10 4.55228 10.4477 5 11 5H13.5858L7.29289 11.2929C6.90237 11.6834 6.90237 12.3166 7.29289 12.7071C7.68342 13.0976 8.31658 13.0976 8.70711 12.7071L15 6.41421V9C15 9.55228 15.4477 10 16 10C16.5523 10 17 9.55228 17 9V4C17 3.44772 16.5523 3 16 3H11Z" fill="#94A3B8" />
+                    <path d="M5 5C3.89543 5 3 5.89543 3 7V15C3 16.1046 3.89543 17 5 17H13C14.1046 17 15 16.1046 15 15V12C15 11.4477 14.5523 11 14 11C13.4477 11 13 11.4477 13 12V15H5V7L8 7C8.55228 7 9 6.55228 9 6C9 5.44772 8.55228 5 8 5H5Z" fill="#94A3B8" />
+                  </svg>
+                </a>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        {% comment %}pagination{% endcomment %}
+        <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between py-3" aria-label="Table navigation">
+          <span class="pl-4 text-sm font-normal text-gray-500 :inline md:w-auto">Showing <span class="font-semibold text-gray-900">1-10</span> of <span class="font-semibold text-gray-900">1000</span></span>
+          <ul class="pr-3 inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
+            <li>
+              <a href="#" class="flex items-center justify-center px-1 h-7 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700">
+                <svg class="w-6 h-6 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m14 8-4 4 4 4" />
+                </svg>
+              </a>
+            </li>
+            <li>
+              <a href="#" class="flex items-center justify-center px-3 h-7 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">1</a>
+            </li>
+            <li>
+              <a href="#" class="flex items-center justify-center px-3 h-7 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">2</a>
+            </li>
+            <li>
+              <a href="#" aria-current="page" class="flex items-center justify-center px-3 h-7 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700">3</a>
+            </li>
+            <li>
+              <a href="#" class="flex items-center justify-center px-3 h-7 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">4</a>
+            </li>
+            <li>
+              <a href="#" class="flex items-center justify-center px-3 h-7 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">5</a>
+            </li>
+            <li>
+              <a href="#" class="flex items-center justify-center px-1 h-7 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700">
+                <svg class="w-6 h-6 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                  <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m10 16 4-4-4-4" />
+                </svg>
+              </a>
+            </li>
+          </ul>
+        </nav>
       </div>
     </div>
   </body>
