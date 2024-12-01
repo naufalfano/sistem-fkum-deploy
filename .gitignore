@@ -1,6 +1,4 @@
-/dataUKMPPD/__pycache__
-/dataUKMPPD/migrations/__pycache__
-/webdemo/__pycache__
-
+*.log
+*.pot
+*.pyc
 __pycache__/
-*.py[cod]
