@@ -1,0 +1,214 @@
+{% load static tailwind_tags %} {% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Detail Hasil UKMPPD</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet"/>
+    {% tailwind_css %}
+</head>
+
+<body class="bg-slate-100 font-['Inter']">
+    <aside id="default-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
+        <div class="h-full px-3 py-4 mt-1 overflow-y-auto bg-white flex flex-col justify-between">
+            <div class="flex flex-col gap-6">
+                <div class="sm:ml flex justify-center gap-2 items-center">
+                    <img class="w-10" src="{% static 'img/rdib.png' %}" />
+                    <img class="w-[163.76px] h-[19.51px]" src="{% static 'img/fkum.png' %}"/>
+                </div>
+
+                <ul class="space-y-1 font-medium">
+
+                    <a href="" class="flex items-center p-3 hover:bg-[#b0d9dc] rounded-lg text-gray-900 dark:text-white">
+                        <li class="flex gap-2 items-center justify-start">
+                            <svg class="w-6 h-6 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd" d="M12 6a3.5 3.5 0 1 0 0 7 3.5 3.5 0 0 0 0-7Zm-1.5 8a4 4 0 0 0-4 4 2 2 0 0 0 2 2h7a2 2 0 0 0 2-2 4 4 0 0 0-4-4h-3Zm6.82-3.096a5.51 5.51 0 0 0-2.797-6.293 3.5 3.5 0 1 1 2.796 6.292ZM19.5 18h.5a2 2 0 0 0 2-2 4 4 0 0 0-4-4h-1.1a5.503 5.503 0 0 1-.471.762A5.998 5.998 0 0 1 19.5 18ZM4 7.5a3.5 3.5 0 0 1 5.477-2.889 5.5 5.5 0 0 0-2.796 6.293A3.501 3.501 0 0 1 4 7.5ZM7.1 12H6a4 4 0 0 0-4 4 2 2 0 0 0 2 2h.5a5.998 5.998 0 0 1 3.071-5.238A5.505 5.505 0 0 1 7.1 12Z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-slate-800 text-[14px] font-medium font-['Inter'] leading-normal">Data Nilai Mahasiswa</span>
+                        </li>
+                    </a>
+
+                    <a href="#" class="flex items-center p-3 hover:bg-[#b0d9dc] rounded-lg text-gray-900 dark:text-white">
+                        <li class="flex gap-2 items-center justify-start">
+                            <svg class="w-6 h-6 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd" d="M9 7V2.221a2 2 0 0 0-.5.365L4.586 6.5a2 2 0 0 0-.365.5H9Zm2 0V2h7a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9h5a2 2 0 0 0 2-2Zm-1 9a1 1 0 1 0-2 0v2a1 1 0 1 0 2 0v-2Zm2-5a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1Zm4 4a1 1 0 1 0-2 0v3a1 1 0 1 0 2 0v-3Z" clip-rule="evenodd"/>
+                            </svg>
+                            <span class="text-slate-800 text-[14px] font-medium font-['Inter'] leading-normal">Data Kelulusan UKMPPD</span>
+                        </li>
+                    </a>
+
+                    <a href="#" class="flex items-center p-3 hover:bg-[#b0d9dc] rounded-lg text-gray-900 dark:text-white">
+                        <li class="flex gap-2 items-center justify-start">
+                            <svg class="w-6 h-6 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M12 7.205c4.418 0 8-1.165 8-2.602C20 3.165 16.418 2 12 2S4 3.165 4 4.603c0 1.437 3.582 2.602 8 2.602ZM12 22c4.963 0 8-1.686 8-2.603v-4.404c-.052.032-.112.06-.165.09a7.75 7.75 0 0 1-.745.387c-.193.088-.394.173-.6.253-.063.024-.124.05-.189.073a18.934 18.934 0 0 1-6.3.998c-2.135.027-4.26-.31-6.3-.998-.065-.024-.126-.05-.189-.073a10.143 10.143 0 0 1-.852-.373 7.75 7.75 0 0 1-.493-.267c-.053-.03-.113-.058-.165-.09v4.404C4 20.315 7.037 22 12 22Zm7.09-13.928a9.91 9.91 0 0 1-.6.253c-.063.025-.124.05-.189.074a18.935 18.935 0 0 1-6.3.998c-2.135.027-4.26-.31-6.3-.998-.065-.024-.126-.05-.189-.074a10.163 10.163 0 0 1-.852-.372 7.816 7.816 0 0 1-.493-.268c-.055-.03-.115-.058-.167-.09V12c0 .917 3.037 2.603 8 2.603s8-1.686 8-2.603V7.596c-.052.031-.112.059-.165.09a7.816 7.816 0 0 1-.745.386Z"/>
+                            </svg>
+                            <span class="text-slate-800 text-[14px] font-medium font-['Inter'] leading-normal">Model Prediksi</span>
+                        </li>
+                    </a>
+                    
+                </ul>
+            </div>
+
+            <div class="px-4 py-1 mb-2 border-2 rounded-[8px] flex justify-between items-center">
+                <div class="flex flex-col">
+                    <span class="text-slate-800 text-[14px] font-medium font-['Inter'] leading-normal">Nama</span>
+                    <span class="text-slate-500 text-[10px] font-medium font-['Inter'] leading-normal">email@com</span>
+                </div>
+                <a href="/login">
+                    <svg width="20" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17 16L21 12M21 12L17 8M21 12L7 12M13 16V17C13 18.6569 11.6569 20 10 20H6C4.34315 20 3 18.6569 3 17V7C3 5.34315 4.34315 4 6 4H10C11.6569 4 13 5.34315 13 7V8" stroke="#EF4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </aside>
+
+    {% comment %}Title{% endcomment %}
+    <div class="p-4 gap-y-6 sm:ml-64 mr-7 ps-7 flex flex-col">
+        <div class="flex items-center justify-between">
+            
+            <!-- Breadcrumb -->
+            <nav class="flex items-center justify-between px-5 py-3 text-gray-700 border border-gray-200 rounded-lg bg-gray-50" aria-label="Breadcrumb">
+                <ol class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse">
+                    <li class="inline-flex items-center">
+                        <a href="/data-ukmppd" class="inline-flex items-center text-sm font-medium text-slate-400 hover:text-slate-800">
+                        <svg class="w-6 h-6 me-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                            <path fill-rule="evenodd" d="M9 7V2.221a2 2 0 0 0-.5.365L4.586 6.5a2 2 0 0 0-.365.5H9Zm2 0V2h7a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9h5a2 2 0 0 0 2-2Zm-1 9a1 1 0 1 0-2 0v2a1 1 0 1 0 2 0v-2Zm2-5a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1Zm4 4a1 1 0 1 0-2 0v3a1 1 0 1 0 2 0v-3Z" clip-rule="evenodd"/>
+                        </svg>
+                        Data Kelulusan UKMPPD</a>
+                    </li>
+                    <li>
+                        <div class="flex items-center">
+                            <svg class="rtl:rotate-180 block w-3 h-3 mx-1 text-slate-300 " aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 6 10">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 9 4-4-4-4"/>
+                            </svg>
+                            <a href="#" class="ms-1 text-sm font-medium text-slate-700">Detail Hasil UKMPPD</a>
+                        </div>
+                    </li>
+                </ol>
+            </nav>
+        </div>
+
+        <div class="flex flex-col gap-6 justify-start bg-white rounded-lg p-6 shadow">
+            <div class="text-lg font-semibold text-slate-600">Detail Hasil UKMPPD</div>
+            <div class="space-y-0">
+                <div class="grid grid-cols-3 gap-4">
+                    <div class="mb-6">
+                        <label for="default-input" class="block mb-2 text-sm font-medium text-gray-900">Nama</label>
+                        <input type="text" id="disabled-input-2" aria-label="disabled input 2" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed" value="Muhammad Andi" disabled readonly>
+                    </div>
+                    <div class="mb-6">
+                        <label for="default-input" class="block mb-2 text-sm font-medium text-gray-900">NIM</label>
+                        <input type="text" id="disabled-input-2" aria-label="disabled input 2" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed" value="123456789" disabled readonly>
+                    </div>
+                    <div class="mb-6">
+                        <label for="default-input" class="block mb-2 text-sm font-medium text-gray-900">Tahun Ajaran</label>
+                        <input type="text" id="disabled-input-2" aria-label="disabled input 2" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed" value="Genap 2024-2025" disabled readonly>
+                    </div>
+                </div>
+        
+                <div class="inline-flex space-x-8">
+                    <div class="mb-6">
+                        <label for="default-input" class="block mb-2 text-sm font-medium text-gray-900">Periode UKMPPD</label>
+                        <input type="text" id="disabled-input-2" aria-label="disabled input 2" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed" value="Februari 2024" disabled readonly>
+                    </div>
+                    <div class="mb-6">
+                        <label for="default-input" class="block mb-2 text-sm font-medium text-gray-900">Hasil UKMPPD</label>
+                        <span class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded border border-red-400">Retake</span>
+                    </div>
+                </div>
+            </div>
+
+            {% comment %} Table Nilai {% endcomment %}
+            <div class="grid grid-cols-4 gap-2 items-center">
+                <div class="col-span-2"> 
+                    <div class="text-md font-medium text-slate-500">Rekap Nilai Mahasiswa</div>        
+                </div>
+                <div class="col-start-4 justify-end inline-flex gap-2">
+                    <form class="max-w-md">
+                        <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-4 py-2">
+                        <option selected value="sem1">Semester 1</option>
+                        <option value="sem2">Semester 2</option>
+                        <option value="sem3">Semester 3</option>
+                        <option value="sem4">Semester 4</option>
+                        </select>
+                    </form>
+                </div>
+            </div>
+            <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
+                <table class="w-full text-sm text-left rtl:text-right text-gray-500">
+                    <thead class="text-xs uppercase bg-slate-50 border-b">
+                        <tr>
+                            <th scope="col" class="px-6 py-3">Kode Stase</th>
+                            <th scope="col" class="px-6 py-3">Stase</th>
+                            <th scope="col" class="px-6 py-3">Ujian Kompetensi</th>
+                            <th scope="col" class="px-6 py-3">Nilai Akhir</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="bg-white border-b hover:bg-gray-100">
+                            <td class="w-6 p-4">IPD-1</td>
+                            <td class="px-6 py-4">Ilmu Penyakit Dalam</td>
+                            <td class="px-6 py-4">MCQ-CBT</td>
+                            <td class="px-6 py-4">56</td>
+                        </tr>
+
+                        <tr class="bg-white border-b hover:bg-gray-100">
+                            <td class="w-6 p-4">IPD-1</td>
+                            <td class="px-6 py-4">Ilmu Penyakit Dalam</td>
+                            <td class="px-6 py-4">Referat</td>
+                            <td class="px-6 py-4">56</td>
+                        </tr>
+
+                        <tr class="bg-white border-b hover:bg-gray-100">
+                            <td class="w-6 p-4">PED-1</td>
+                            <td class="px-6 py-4">Ilmu Pediatri</td>
+                            <td class="px-6 py-4">MCQ-CBT</td>
+                            <td class="px-6 py-4">56</td>
+                        </tr>
+
+                        <tr class="bg-white border-b hover:bg-gray-100">
+                            <td class="w-6 p-4">PED-1</td>
+                            <td class="px-6 py-4">Ilmu Pediatri</td>
+                            <td class="px-6 py-4">Referat</td>
+                            <td class="px-6 py-4">56</td>
+                        </tr>
+
+                        <tr class="bg-white border-b hover:bg-gray-100">
+                            <td class="w-6 p-4">RAD-1</td>
+                            <td class="px-6 py-4">Ilmu Radiologi</td>
+                            <td class="px-6 py-4">MCQ-CBT</td>
+                            <td class="px-6 py-4">56</td>
+                        </tr>
+
+                        <tr class="bg-white border-b hover:bg-gray-100">
+                            <td class="w-6 p-4">RAD-1</td>
+                            <td class="px-6 py-4">Ilmu Radiologi</td>
+                            <td class="px-6 py-4">Telaah Kritis Ilmiah</td>
+                            <td class="px-6 py-4">56</td>
+                        </tr>
+
+                        <tr class="bg-white border-b hover:bg-gray-100">
+                            <td class="w-6 p-4">SRM-1</td>
+                            <td class="px-6 py-4">Ilmu Saraf & Rehabilitasi Medik</td>
+                            <td class="px-6 py-4">MCQ-CBT</td>
+                            <td class="px-6 py-4">56</td>
+                        </tr>
+
+                        <tr class="bg-white border-b hover:bg-gray-100">
+                            <td class="w-6 p-4">SRM-1</td>
+                            <td class="px-6 py-4">Ilmu Saraf & Rehabilitasi Medik</td>
+                            <td class="px-6 py-4">Telaah Kritis Ilmiah</td>
+                            <td class="px-6 py-4">56</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

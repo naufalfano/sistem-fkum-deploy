@@ -7,3 +7,6 @@ def dashboardUKMPPD(request):
 
 def uploadUKMPPD(request):
     return render(request, 'dataUKMPPD/form-upload-ukmppd.html')
+
+def detailHasilUKMPPD(request):
+    return render(request, 'dataUKMPPD/detail-hasil-ukmppd.html')
