@@ -40,7 +40,8 @@ INSTALLED_APPS = [
     'tailwind',
     'theme',
     'users',
-    'dataUKMPPD'
+    'dataUKMPPD',
+    'modelPrediksi'
 ]
 
 TAILWIND_APP_NAME = 'theme'
