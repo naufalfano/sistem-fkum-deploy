@@ -53,17 +53,17 @@
                 </ul>
             </div>
 
-            <div class="px-3 py-1 mb-2 border-2 rounded-[8px] flex justify-between items-center">
+            <div class="px-4 py-2 mb-2 border-2 rounded-lg flex justify-between items-center">
                 <div class="flex flex-col">
-                  <span class="text-slate-800 text-[11px] font-medium font-['Inter'] leading-normal">{{ user.username }}</span>
-                  <span class="text-slate-500 text-[10px] font-medium font-['Inter'] leading-normal">{{ user.email }}</span>
+                    <span class="text-slate-600 text-sm font-semibold">{{ user.username }}</span>
+                    <span class="text-slate-500 text-xs font-normal">{{ user.email }}</span>
                 </div>
                 <a href="{% url 'logout' %}">
-                  <svg width="20" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M17 16L21 12M21 12L17 8M21 12L7 12M13 16V17C13 18.6569 11.6569 20 10 20H6C4.34315 20 3 18.6569 3 17V7C3 5.34315 4.34315 4 6 4H10C11.6569 4 13 5.34315 13 7V8" stroke="#EF4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                  </svg>
+                    <svg width="20" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M17 16L21 12M21 12L17 8M21 12L7 12M13 16V17C13 18.6569 11.6569 20 10 20H6C4.34315 20 3 18.6569 3 17V7C3 5.34315 4.34315 4 6 4H10C11.6569 4 13 5.34315 13 7V8" stroke="#EF4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                    </svg>
                 </a>
-              </div>
+            </div>
         </div>
     </aside>
 
