@@ -7,5 +7,6 @@ urlpatterns = [
     path('', views.index),
     path('', include('django.contrib.auth.urls')),
     path('login/', include('users.urls')),
-    path('data-ukmppd/', include('dataUKMPPD.urls'))
+    path('data-ukmppd/', include('dataUKMPPD.urls')),
+    path('model-prediksi/', include('modelPrediksi.urls'))
 ]
