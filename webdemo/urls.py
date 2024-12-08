@@ -9,5 +9,6 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
     path('login/', include('users.urls')),
     path('data-ukmppd/', include('dataUKMPPD.urls')),
-    path('model-prediksi/', include('modelPrediksi.urls'))
+    path('model-prediksi/', include('modelPrediksi.urls')),
+    path('data-nilai/', include('dataNilai.urls'))
 ]
