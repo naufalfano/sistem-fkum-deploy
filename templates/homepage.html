@@ -73,12 +73,12 @@
       {% comment %}Title{% endcomment %}
       <div class="flex grid-cols-1 items-center justify-between">
         <span class="text-slate-700 text-2xl font-semibold font-['Inter'] leading-loose">Aplikasi Prediksi dan Sistem Pakar Kelulusan UKMPPD</span>
-        <button type="button" class="bg-[#1a56db] rounded-lg justify-center items-center flex gap-3 px-5 h-[37px]">
+        <a href="data-nilai/form-nilai" class="bg-blue-600 hover:bg-blue-700 rounded-lg justify-center items-center flex gap-3 px-5 h-[37px]">
           <span class="text-white text-sm font-base font-['Inter'] leading-[21px]">Unggah Nilai Mahasiswa</span>
           <svg class="w-5 h-5 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="none" viewBox="0 0 24 24">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7 7V5" />
           </svg>
-        </button>
+        </a>
       </div>
       {% comment %}Banner Sign{% endcomment %}
       <div class="p-3 px-4 flex flex-col gap-y-1 bg-[#e1effe] rounded-xl">
@@ -90,17 +90,17 @@
         </div>
         <span class="text-[#1a56db] text-sm font-normal font-['Inter'] leading-[21px]">Sistem ini dapat melakukan prediksi kelulusan mahasiswa pada ujian UKMPPD percobaan pertama. Prediksi kelulusan hanya dilakukan pada aspek kognitif.</span>
       </div>
+
       {% comment %}Card{% endcomment %}
       <div class="flex flex-col gap-4">
-        {% comment %}Header{% endcomment %}
+        {% comment %} Header {% endcomment %}
         <div class="flex justify-between">
           <span class="text-slate-600 text-lg font-medium font-['Inter'] leading-7">Data Prediksi Kelulusan UKMPPD</span>
-          <a href="" class="text-blue-600 text-sm font-semibold font-['Inter'] leading-normal items-center">Lihat Semua</a>
         </div>
-        {% comment %}Card{% endcomment %}
+        {% comment %} Card {% endcomment %}
         <div class="grid md:grid-cols-2 gap-14">
           {% comment %}CARD ONE{% endcomment %}
-          <div class="flex gap-x-4 items-center bg-white shadow p-7 rounded-lg h-[95px]">
+          <div class="flex gap-x-4 items-center bg-white shadow p-7 rounded-lg">
             <svg class="w-8 h-8 text-green-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
               <path d="M9 7V2.221a2 2 0 0 0-.5.365L4.586 6.5a2 2 0 0 0-.365.5H9Z" />
               <path fill-rule="evenodd" d="M11 7V2h7a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9h5a2 2 0 0 0 2-2Zm4.707 5.707a1 1 0 0 0-1.414-1.414L11 14.586l-1.293-1.293a1 1 0 0 0-1.414 1.414l2 2a1 1 0 0 0 1.414 0l4-4Z" clip-rule="evenodd" />
@@ -110,8 +110,8 @@
               <span class="text-[30px] font-bold leading-none">150</span>
             </div>
           </div>
-          {% comment %}CARD TWO{% endcomment %}
-          <div class="flex gap-x-4 items-center bg-white shadow p-7 rounded-lg h-[95px]">
+          {% comment %} CARD TWO {% endcomment %}
+          <div class="flex gap-x-4 items-center bg-white shadow p-7 rounded-lg">
             <svg class="w-8 h-8 text-red-600" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.651 7.65a7.131 7.131 0 0 0-12.68 3.15M18.001 4v4h-4m-7.652 8.35a7.13 7.13 0 0 0 12.68-3.15M6 20v-4h4" />
             </svg>
@@ -122,26 +122,68 @@
           </div>
         </div>
       </div>
+
       {% comment %}table{% endcomment %}
+      <div class="grid grid-cols-4 gap-2">
+        <div class="col-span-2">         
+          <div class="w-full max-w-sm min-w-[200px]">
+            <div class="relative flex items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="absolute w-5 h-5 top-2.5 left-2.5 text-slate-600">
+                <path fill-rule="evenodd" d="M10.5 3.75a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM2.25 10.5a8.25 8.25 0 1 1 14.59 5.28l4.69 4.69a.75.75 0 1 1-1.06 1.06l-4.69-4.69A8.25 8.25 0 0 1 2.25 10.5Z" clip-rule="evenodd" />
+              </svg>
+              <input
+              class="w-full bg-white placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-lg pl-10 pr-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300"
+              placeholder="Cari nama mahasiswa disini"/>
+              <button
+                class="rounded-lg bg-blue-600 py-2 px-4 border border-transparent text-center text-sm text-white focus:bg-blue-700 focus:shadow-none active:bg-blue-700 hover:bg-blue-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 ml-2"
+                type="button">
+                Search
+              </button> 
+            </div>
+          </div>
+        </div>
+        <div class="col-start-4 justify-end inline-flex gap-2">
+          <form class="max-w-md">
+            <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-4 py-2">
+              <option selected>Semua Angkatan</option>
+              <option value="US">2022</option>
+              <option value="CA">2023</option>
+              <option value="FR">2024</option>
+              <option value="DE">2025</option>
+            </select>
+          </form>
+          <form class="max-w-md">
+            <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-4 py-2">
+              <option selected>Semua Status</option>
+              <option value="US">Lulus</option>
+              <option value="CA">Retake</option>
+            </select>
+          </form>
+        </div>
+      </div>
+
       <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500">
           <thead class="text-xs uppercase bg-slate-50 border-b">
             <tr>
               <th scope="col" class="p-4">NIM</th>
               <th scope="col" class="px-6 py-3">Nama Mahasiswa</th>
-              <th scope="col" class="px-6 py-3">Tahun Ajaran</th>
+              <th scope="col" class="px-6 py-3">Angkatan</th>
               <th scope="col" class="px-6 py-3">Hasil Prediksi</th>
               <th scope="col" class="px-6 py-3"></th>
             </tr>
           </thead>
           <tbody>
+
             <tr class="bg-white border-b hover:bg-gray-200">
               <td class="w-4 p-4">123123123</td>
-              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Apple MacBook Pro 17"</th>
-              <td class="px-6 py-4">Silver</td>
-              <td class="px-6 py-4">Laptop</td>
+              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Muhammad Andi</th>
+              <td class="px-6 py-4">2021</td>
               <td class="px-6 py-4">
-                <a href="#" class="font-medium hover:underline">
+                <span class="bg-red-100 text-red-800 border-red-300 font-['Inter'] text-xs font-medium me-2 px-2.5 py-0.5 rounded">Retake</span>
+              </td>
+              <td class="px-4 py-4">
+                <a href="data-nilai/detail-nilai/" class="font-medium hover:underline">
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M11 3C10.4477 3 10 3.44772 10 4C10 4.55228 10.4477 5 11 5H13.5858L7.29289 11.2929C6.90237 11.6834 6.90237 12.3166 7.29289 12.7071C7.68342 13.0976 8.31658 13.0976 8.70711 12.7071L15 6.41421V9C15 9.55228 15.4477 10 16 10C16.5523 10 17 9.55228 17 9V4C17 3.44772 16.5523 3 16 3H11Z" fill="#94A3B8" />
                     <path d="M5 5C3.89543 5 3 5.89543 3 7V15C3 16.1046 3.89543 17 5 17H13C14.1046 17 15 16.1046 15 15V12C15 11.4477 14.5523 11 14 11C13.4477 11 13 11.4477 13 12V15H5V7L8 7C8.55228 7 9 6.55228 9 6C9 5.44772 8.55228 5 8 5H5Z" fill="#94A3B8" />
@@ -149,13 +191,16 @@
                 </a>
               </td>
             </tr>
+
             <tr class="bg-white border-b hover:bg-gray-200">
               <td class="w-4 p-4">123123123</td>
-              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Microsoft Surface Pro</th>
-              <td class="px-6 py-4">White</td>
-              <td class="px-6 py-4">Laptop PC</td>
+              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Muhammad Andi</th>
+              <td class="px-6 py-4">2021</td>
               <td class="px-6 py-4">
-                <a href="#" class="font-medium hover:underline">
+                <span class="bg-red-100 text-red-800 border-red-300 font-['Inter'] text-xs font-medium me-2 px-2.5 py-0.5 rounded">Retake</span>
+              </td>
+              <td class="px-4 py-4">
+                <a href="data-nilai/detail-nilai/" class="font-medium hover:underline">
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M11 3C10.4477 3 10 3.44772 10 4C10 4.55228 10.4477 5 11 5H13.5858L7.29289 11.2929C6.90237 11.6834 6.90237 12.3166 7.29289 12.7071C7.68342 13.0976 8.31658 13.0976 8.70711 12.7071L15 6.41421V9C15 9.55228 15.4477 10 16 10C16.5523 10 17 9.55228 17 9V4C17 3.44772 16.5523 3 16 3H11Z" fill="#94A3B8" />
                     <path d="M5 5C3.89543 5 3 5.89543 3 7V15C3 16.1046 3.89543 17 5 17H13C14.1046 17 15 16.1046 15 15V12C15 11.4477 14.5523 11 14 11C13.4477 11 13 11.4477 13 12V15H5V7L8 7C8.55228 7 9 6.55228 9 6C9 5.44772 8.55228 5 8 5H5Z" fill="#94A3B8" />
@@ -163,13 +208,16 @@
                 </a>
               </td>
             </tr>
+
             <tr class="bg-white border-b hover:bg-gray-200">
               <td class="w-4 p-4">123123123</td>
-              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Magic Mouse 2</th>
-              <td class="px-6 py-4">Black</td>
-              <td class="px-6 py-4">Accessories</td>
+              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Muhammad Andi</th>
+              <td class="px-6 py-4">2021</td>
               <td class="px-6 py-4">
-                <a href="#" class="font-medium hover:underline">
+                <span class="bg-green-100 text-green-800 border-green-300 font-['Inter'] text-xs font-medium me-2 px-2.5 py-0.5 rounded">Lulus</span>
+              </td>
+              <td class="px-4 py-4">
+                <a href="" class="font-medium hover:underline">
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M11 3C10.4477 3 10 3.44772 10 4C10 4.55228 10.4477 5 11 5H13.5858L7.29289 11.2929C6.90237 11.6834 6.90237 12.3166 7.29289 12.7071C7.68342 13.0976 8.31658 13.0976 8.70711 12.7071L15 6.41421V9C15 9.55228 15.4477 10 16 10C16.5523 10 17 9.55228 17 9V4C17 3.44772 16.5523 3 16 3H11Z" fill="#94A3B8" />
                     <path d="M5 5C3.89543 5 3 5.89543 3 7V15C3 16.1046 3.89543 17 5 17H13C14.1046 17 15 16.1046 15 15V12C15 11.4477 14.5523 11 14 11C13.4477 11 13 11.4477 13 12V15H5V7L8 7C8.55228 7 9 6.55228 9 6C9 5.44772 8.55228 5 8 5H5Z" fill="#94A3B8" />
@@ -177,13 +225,16 @@
                 </a>
               </td>
             </tr>
+
             <tr class="bg-white border-b hover:bg-gray-200">
               <td class="w-4 p-4">123123123</td>
-              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Apple Watch</th>
-              <td class="px-6 py-4">Black</td>
-              <td class="px-6 py-4">Watches</td>
+              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Muhammad Andi</th>
+              <td class="px-6 py-4">2021</td>
               <td class="px-6 py-4">
-                <a href="#" class="font-medium hover:underline">
+                <span class="bg-green-100 text-green-800 border-green-300 font-['Inter'] text-xs font-medium me-2 px-2.5 py-0.5 rounded">Lulus</span>
+              </td>
+              <td class="px-4 py-4">
+                <a href="" class="font-medium hover:underline">
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M11 3C10.4477 3 10 3.44772 10 4C10 4.55228 10.4477 5 11 5H13.5858L7.29289 11.2929C6.90237 11.6834 6.90237 12.3166 7.29289 12.7071C7.68342 13.0976 8.31658 13.0976 8.70711 12.7071L15 6.41421V9C15 9.55228 15.4477 10 16 10C16.5523 10 17 9.55228 17 9V4C17 3.44772 16.5523 3 16 3H11Z" fill="#94A3B8" />
                     <path d="M5 5C3.89543 5 3 5.89543 3 7V15C3 16.1046 3.89543 17 5 17H13C14.1046 17 15 16.1046 15 15V12C15 11.4477 14.5523 11 14 11C13.4477 11 13 11.4477 13 12V15H5V7L8 7C8.55228 7 9 6.55228 9 6C9 5.44772 8.55228 5 8 5H5Z" fill="#94A3B8" />
@@ -191,13 +242,16 @@
                 </a>
               </td>
             </tr>
+
             <tr class="bg-white border-b hover:bg-gray-200">
               <td class="w-4 p-4">123123123</td>
-              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Apple iMac</th>
-              <td class="px-6 py-4">Silver</td>
-              <td class="px-6 py-4">PC</td>
+              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Muhammad Andi</th>
+              <td class="px-6 py-4">2021</td>
               <td class="px-6 py-4">
-                <a href="#" class="font-medium hover:underline">
+                <span class="bg-green-100 text-green-800 border-green-300 font-['Inter'] text-xs font-medium me-2 px-2.5 py-0.5 rounded">Lulus</span>
+              </td>
+              <td class="px-4 py-4">
+                <a href="" class="font-medium hover:underline">
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M11 3C10.4477 3 10 3.44772 10 4C10 4.55228 10.4477 5 11 5H13.5858L7.29289 11.2929C6.90237 11.6834 6.90237 12.3166 7.29289 12.7071C7.68342 13.0976 8.31658 13.0976 8.70711 12.7071L15 6.41421V9C15 9.55228 15.4477 10 16 10C16.5523 10 17 9.55228 17 9V4C17 3.44772 16.5523 3 16 3H11Z" fill="#94A3B8" />
                     <path d="M5 5C3.89543 5 3 5.89543 3 7V15C3 16.1046 3.89543 17 5 17H13C14.1046 17 15 16.1046 15 15V12C15 11.4477 14.5523 11 14 11C13.4477 11 13 11.4477 13 12V15H5V7L8 7C8.55228 7 9 6.55228 9 6C9 5.44772 8.55228 5 8 5H5Z" fill="#94A3B8" />
@@ -205,13 +259,16 @@
                 </a>
               </td>
             </tr>
+
             <tr class="bg-white border-b hover:bg-gray-200">
               <td class="w-4 p-4">123123123</td>
-              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Apple AirPods</th>
-              <td class="px-6 py-4">White</td>
-              <td class="px-6 py-4">Accessories</td>
+              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Muhammad Andi</th>
+              <td class="px-6 py-4">2021</td>
               <td class="px-6 py-4">
-                <a href="#" class="font-medium hover:underline">
+                <span class="bg-green-100 text-green-800 border-green-300 font-['Inter'] text-xs font-medium me-2 px-2.5 py-0.5 rounded">Lulus</span>
+              </td>
+              <td class="px-4 py-4">
+                <a href="" class="font-medium hover:underline">
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M11 3C10.4477 3 10 3.44772 10 4C10 4.55228 10.4477 5 11 5H13.5858L7.29289 11.2929C6.90237 11.6834 6.90237 12.3166 7.29289 12.7071C7.68342 13.0976 8.31658 13.0976 8.70711 12.7071L15 6.41421V9C15 9.55228 15.4477 10 16 10C16.5523 10 17 9.55228 17 9V4C17 3.44772 16.5523 3 16 3H11Z" fill="#94A3B8" />
                     <path d="M5 5C3.89543 5 3 5.89543 3 7V15C3 16.1046 3.89543 17 5 17H13C14.1046 17 15 16.1046 15 15V12C15 11.4477 14.5523 11 14 11C13.4477 11 13 11.4477 13 12V15H5V7L8 7C8.55228 7 9 6.55228 9 6C9 5.44772 8.55228 5 8 5H5Z" fill="#94A3B8" />
@@ -219,13 +276,16 @@
                 </a>
               </td>
             </tr>
+
             <tr class="bg-white border-b hover:bg-gray-200">
               <td class="w-4 p-4">123123123</td>
-              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">iPad Pro</th>
-              <td class="px-6 py-4">Gold</td>
-              <td class="px-6 py-4">Tablet</td>
+              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Muhammad Andi</th>
+              <td class="px-6 py-4">2021</td>
               <td class="px-6 py-4">
-                <a href="#" class="font-medium hover:underline">
+                <span class="bg-green-100 text-green-800 border-green-300 font-['Inter'] text-xs font-medium me-2 px-2.5 py-0.5 rounded">Lulus</span>
+              </td>
+              <td class="px-4 py-4">
+                <a href="" class="font-medium hover:underline">
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M11 3C10.4477 3 10 3.44772 10 4C10 4.55228 10.4477 5 11 5H13.5858L7.29289 11.2929C6.90237 11.6834 6.90237 12.3166 7.29289 12.7071C7.68342 13.0976 8.31658 13.0976 8.70711 12.7071L15 6.41421V9C15 9.55228 15.4477 10 16 10C16.5523 10 17 9.55228 17 9V4C17 3.44772 16.5523 3 16 3H11Z" fill="#94A3B8" />
                     <path d="M5 5C3.89543 5 3 5.89543 3 7V15C3 16.1046 3.89543 17 5 17H13C14.1046 17 15 16.1046 15 15V12C15 11.4477 14.5523 11 14 11C13.4477 11 13 11.4477 13 12V15H5V7L8 7C8.55228 7 9 6.55228 9 6C9 5.44772 8.55228 5 8 5H5Z" fill="#94A3B8" />
@@ -233,13 +293,16 @@
                 </a>
               </td>
             </tr>
+
             <tr class="bg-white border-b hover:bg-gray-200">
               <td class="w-4 p-4">123123123</td>
-              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Magic Keyboard</th>
-              <td class="px-6 py-4">Black</td>
-              <td class="px-6 py-4">Accessories</td>
+              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Muhammad Andi</th>
+              <td class="px-6 py-4">2021</td>
               <td class="px-6 py-4">
-                <a href="#" class="font-medium hover:underline">
+                <span class="bg-green-100 text-green-800 border-green-300 font-['Inter'] text-xs font-medium me-2 px-2.5 py-0.5 rounded">Lulus</span>
+              </td>
+              <td class="px-4 py-4">
+                <a href="" class="font-medium hover:underline">
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M11 3C10.4477 3 10 3.44772 10 4C10 4.55228 10.4477 5 11 5H13.5858L7.29289 11.2929C6.90237 11.6834 6.90237 12.3166 7.29289 12.7071C7.68342 13.0976 8.31658 13.0976 8.70711 12.7071L15 6.41421V9C15 9.55228 15.4477 10 16 10C16.5523 10 17 9.55228 17 9V4C17 3.44772 16.5523 3 16 3H11Z" fill="#94A3B8" />
                     <path d="M5 5C3.89543 5 3 5.89543 3 7V15C3 16.1046 3.89543 17 5 17H13C14.1046 17 15 16.1046 15 15V12C15 11.4477 14.5523 11 14 11C13.4477 11 13 11.4477 13 12V15H5V7L8 7C8.55228 7 9 6.55228 9 6C9 5.44772 8.55228 5 8 5H5Z" fill="#94A3B8" />
@@ -247,13 +310,16 @@
                 </a>
               </td>
             </tr>
+
             <tr class="bg-white border-b hover:bg-gray-200">
               <td class="w-4 p-4">123123123</td>
-              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Smart Folio iPad Air</th>
-              <td class="px-6 py-4">Blue</td>
-              <td class="px-6 py-4">Accessories</td>
+              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Muhammad Andi</th>
+              <td class="px-6 py-4">2021</td>
               <td class="px-6 py-4">
-                <a href="#" class="font-medium hover:underline">
+                <span class="bg-green-100 text-green-800 border-green-300 font-['Inter'] text-xs font-medium me-2 px-2.5 py-0.5 rounded">Lulus</span>
+              </td>
+              <td class="px-4 py-4">
+                <a href="" class="font-medium hover:underline">
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M11 3C10.4477 3 10 3.44772 10 4C10 4.55228 10.4477 5 11 5H13.5858L7.29289 11.2929C6.90237 11.6834 6.90237 12.3166 7.29289 12.7071C7.68342 13.0976 8.31658 13.0976 8.70711 12.7071L15 6.41421V9C15 9.55228 15.4477 10 16 10C16.5523 10 17 9.55228 17 9V4C17 3.44772 16.5523 3 16 3H11Z" fill="#94A3B8" />
                     <path d="M5 5C3.89543 5 3 5.89543 3 7V15C3 16.1046 3.89543 17 5 17H13C14.1046 17 15 16.1046 15 15V12C15 11.4477 14.5523 11 14 11C13.4477 11 13 11.4477 13 12V15H5V7L8 7C8.55228 7 9 6.55228 9 6C9 5.44772 8.55228 5 8 5H5Z" fill="#94A3B8" />
@@ -261,13 +327,16 @@
                 </a>
               </td>
             </tr>
+
             <tr class="bg-white border-b hover:bg-gray-200">
               <td class="w-4 p-4">123123123</td>
-              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">AirTag</th>
-              <td class="px-6 py-4">Silver</td>
-              <td class="px-6 py-4">Accessories</td>
+              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">Muhammad Andi</th>
+              <td class="px-6 py-4">2021</td>
               <td class="px-6 py-4">
-                <a href="#" class="font-medium hover:underline">
+                <span class="bg-green-100 text-green-800 border-green-300 font-['Inter'] text-xs font-medium me-2 px-2.5 py-0.5 rounded">Lulus</span>
+              </td>
+              <td class="px-4 py-4">
+                <a href="" class="font-medium hover:underline">
                   <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M11 3C10.4477 3 10 3.44772 10 4C10 4.55228 10.4477 5 11 5H13.5858L7.29289 11.2929C6.90237 11.6834 6.90237 12.3166 7.29289 12.7071C7.68342 13.0976 8.31658 13.0976 8.70711 12.7071L15 6.41421V9C15 9.55228 15.4477 10 16 10C16.5523 10 17 9.55228 17 9V4C17 3.44772 16.5523 3 16 3H11Z" fill="#94A3B8" />
                     <path d="M5 5C3.89543 5 3 5.89543 3 7V15C3 16.1046 3.89543 17 5 17H13C14.1046 17 15 16.1046 15 15V12C15 11.4477 14.5523 11 14 11C13.4477 11 13 11.4477 13 12V15H5V7L8 7C8.55228 7 9 6.55228 9 6C9 5.44772 8.55228 5 8 5H5Z" fill="#94A3B8" />
