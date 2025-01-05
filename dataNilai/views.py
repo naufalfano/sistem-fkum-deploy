@@ -1,5 +1,4 @@
 from django.shortcuts import render, redirect
-from django.http import HttpResponse
 from django.db import transaction
 from django.conf import settings
 from django.contrib import messages
@@ -93,9 +92,6 @@ def upload_nilai(request):
         
     return render(request, 'dataNilai/form-upload-nilai.html', {'form': form})
                 
-    
-def detailNilai(request):
-    return render(request, 'dataNilai/detail-nilai.html')
 
 def uploadNilai(request):
     return render(request, 'dataNilai/form-upload-nilai.html')
