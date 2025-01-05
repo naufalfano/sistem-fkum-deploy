@@ -13,7 +13,9 @@ def dashboardUKMPPD(request):
         'page_obj': page_obj,
     } 
     return render(request, 'dataUKMPPD/dashboard-ukmppd.html', context)
+
 def uploadUKMPPD(request):
     return render(request, 'dataUKMPPD/form-upload-ukmppd.html')
+
 def detailHasilUKMPPD(request):
     return render(request, 'dataUKMPPD/detail-hasil-ukmppd.html')

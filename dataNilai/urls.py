@@ -3,5 +3,6 @@ from . import views
 
 urlpatterns = [
     path('detail-nilai/', views.detailNilai),
-    path('form-nilai/', views.uploadNilai)
+    path('form-nilai/', views.uploadNilai, name='form-upload-nilai'),
+    path('upload-nilai', views.upload_nilai, name='upload-nilai'),
 ]
