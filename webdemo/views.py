@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse
 from django.contrib.auth import logout
 from django.shortcuts import redirect
@@ -53,6 +53,22 @@ def index(request):
     }
         
     return render(request, 'homepage.html', context)
+
+def detailNilai(request, NIM):
+    select_nim = NIM
+    detail = get_object_or_404(nilaiMahasiswa, NIM=NIM)
+    context = {
+        'select_nim': select_nim,
+        'detail': detail
+    }
+    
+    return render(request, 'detail-nilai.html', context)
+
+def deleteRecord(request, NIM):
+    delete_detail = get_object_or_404(nilaiMahasiswa, NIM=NIM)
+    delete_detail.delete()
+
+    return redirect('index')
 
 def logout_view(request):
     logout(request)
