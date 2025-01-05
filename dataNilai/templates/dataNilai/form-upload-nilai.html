@@ -28,38 +28,49 @@
                 </div>
             </div>
 
-            <div class="flex flex-col py-1 space-y-2">
-                <div class="grid grid-cols-2 gap-2">
-                    <form class="w-full col-span-1 mx-auto">
-                    <label for="countries" class="block mb-2 text-sm font-medium text-slate-500">Semester</label>
-                    <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                        <option class="text-slate-400" selected>Pilih semester</option>
-                        <option value="SEM1">1</option>
-                        <option value="SEM2">2</option>
-                        <option value="SEM3">3</option>
-                        <option value="SEM4">4</option>
-                    </select>
-                    </form>
-                    <form class="w-full col-span-1 mx-auto">
-                    <label for="countries" class="block mb-2 text-sm font-medium text-slate-500">Angkatan</label>
-                    <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5">
-                        <option class="text-slate-400" selected>Pilih angkatan</option>
-                        <option value="2022">2022</option>
-                        <option value="2023">2023</option>
-                        <option value="2024">2024</option>
-                        <option value="2025">2025</option>
-                    </select>
-                    </form>
+            {% if messages %}
+                    <div>
+                        {% for message in messages %}
+                            {% if message.tags == 'error' %}
+                                <div id="alert-2" class="flex items-center p-4 mb-4 text-red-600 rounded-lg bg-red-50" role="alert">
+                                    <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                                        <path fill-rule="evenodd" d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm7.707-3.707a1 1 0 0 0-1.414 1.414L10.586 12l-2.293 2.293a1 1 0 1 0 1.414 1.414L12 13.414l2.293 2.293a1 1 0 0 0 1.414-1.414L13.414 12l2.293-2.293a1 1 0 0 0-1.414-1.414L12 10.586 9.707 8.293Z" clip-rule="evenodd"/>
+                                    </svg>
+                                    
+                                    <div class="ms-3 text-sm font-medium">
+                                        {{ message }}
+                                    </div>
+                                </div>
+                            {% else %}
+                                <div id="alert-3" class="flex items-center p-4 mb-4 text-green-600 rounded-lg bg-green-50" role="alert">
+                                    <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                                        <path fill-rule="evenodd" d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm13.707-1.293a1 1 0 0 0-1.414-1.414L11 12.586l-1.793-1.793a1 1 0 0 0-1.414 1.414l2.5 2.5a1 1 0 0 0 1.414 0l4-4Z" clip-rule="evenodd"/>
+                                    </svg>
+
+                                    <div class="ms-3 text-sm font-medium">
+                                        {{ message }}
+                                    </div>
+                                </div>
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                {% endif %}
+
+            <form action="{% url 'upload-nilai' %}" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+                <div class="space-y-2">
+                    <label class="block text-sm font-medium text-gray-900" for="file_input">Unggah File</label>
+                    <input class="block p-2 w-full text-sm text-slate-600 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none file:bg-blue-600 file:hover:bg-blue-700 file:py-2 file:rounded-md file:text-white file:border-none file:mr-4 file:text-xs" aria-describedby="file_input_help" id="file_input" type="file" name="file"/>
+                    <p class="text-sm text-gray-500" id="file_input_help">File dalam format CSV.</p>
                 </div>
+
+                <button type="submit" class="my-4 w-full px-5 py-2.5 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Unggah Data</button>
+            </form>
+
+            <div>
+                <p>Panduan</p>
             </div>
 
-            <div class="space-y-2">
-            <label class="block text-sm font-medium text-gray-900" for="file_input">Unggah File</label>
-            <input class="block p-2 w-full text-sm text-slate-600 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 focus:outline-none file:bg-blue-600 file:hover:bg-blue-700 file:py-2 file:rounded-md file:text-white file:border-none file:mr-4 file:text-xs" aria-describedby="file_input_help" id="file_input" type="file" />
-            <p class="text-sm text-gray-500" id="file_input_help">File dalam format CSV/XLSX.</p>
-            </div>
-
-            <button type="button" class="w-full px-5 py-2.5 text-base font-medium text-center text-white bg-blue-700 rounded-lg hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">Simpan Data</button>
         </div>
     </section>
 </body>
