@@ -9,7 +9,16 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet"/>
+    <link href="https://unpkg.com/flowbite@1.4.7/dist/flowbite.min.css" rel="stylesheet">
+    <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
+    
     {% tailwind_css %}
+
+    <script>
+        function deleteData(NIM) {
+        window.location.href = "{% url 'delete-hasil-ukmppd' 'NIM_PLACEHOLDER' %}".replace('NIM_PLACEHOLDER', NIM);
+        }
+    </script>
 </head>
 
 <body class="bg-slate-100 font-['Inter']">
@@ -97,26 +106,31 @@
                 <div class="grid grid-cols-3 gap-4">
                     <div class="mb-6">
                         <label for="default-input" class="block mb-2 text-sm font-medium text-gray-900">Nama</label>
-                        <input type="text" id="disabled-input-2" aria-label="disabled input 2" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed" value="Muhammad Andi" disabled readonly>
+                        <input type="text" id="disabled-input-2" aria-label="disabled input 2" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed" value="{{ detail.nama_mahasiswa }}" disabled readonly>
                     </div>
                     <div class="mb-6">
                         <label for="default-input" class="block mb-2 text-sm font-medium text-gray-900">NIM</label>
-                        <input type="text" id="disabled-input-2" aria-label="disabled input 2" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed" value="123456789" disabled readonly>
+                        <input type="text" id="disabled-input-2" aria-label="disabled input 2" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed" value="{{ detail.NIM }}" disabled readonly>
                     </div>
                     <div class="mb-6">
                         <label for="default-input" class="block mb-2 text-sm font-medium text-gray-900">Tahun Ajaran</label>
-                        <input type="text" id="disabled-input-2" aria-label="disabled input 2" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed" value="Genap 2024-2025" disabled readonly>
+                        <input type="text" id="disabled-input-2" aria-label="disabled input 2" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed" value="{{ detail.angkatan }}" disabled readonly>
                     </div>
                 </div>
         
                 <div class="inline-flex space-x-8">
                     <div class="mb-6">
                         <label for="default-input" class="block mb-2 text-sm font-medium text-gray-900">Periode UKMPPD</label>
-                        <input type="text" id="disabled-input-2" aria-label="disabled input 2" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed" value="Februari 2024" disabled readonly>
+                        <input type="text" id="disabled-input-2" aria-label="disabled input 2" class="bg-gray-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 cursor-not-allowed" value="{{ detail.periode_ukmppd }}" disabled readonly>
                     </div>
+
                     <div class="mb-6">
-                        <label for="default-input" class="block mb-2 text-sm font-medium text-gray-900">Hasil UKMPPD</label>
-                        <span class="bg-red-100 text-red-800 text-xs font-medium me-2 px-2.5 py-0.5 rounded border border-red-400">Retake</span>
+                        <label for="default-input" class="block mb-4 text-sm font-medium text-gray-900">Hasil UKMPPD</label>
+                        {% if detail.hasil_ukmppd == 1 %}
+                            <span class="bg-green-50 text-green-600 border border-green-400 text-md font-medium me-2 px-4 py-2 rounded-lg">Lulus</span>
+                        {% elif detail.hasil_ukmppd == 0 %}
+                            <span class="bg-red-50 text-red-600 border border-red-400  text-md font-medium me-2 px-4 py-2 rounded-lg">Retake</span>
+                        {% endif %}
                     </div>
                 </div>
             </div>
@@ -126,85 +140,179 @@
                 <div class="col-span-2"> 
                     <div class="text-md font-medium text-slate-500">Rekap Nilai Mahasiswa</div>        
                 </div>
-                <div class="col-start-4 justify-end inline-flex gap-2">
-                    <form class="max-w-md">
-                        <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-4 py-2">
-                        <option selected value="sem1">Semester 1</option>
-                        <option value="sem2">Semester 2</option>
-                        <option value="sem3">Semester 3</option>
-                        <option value="sem4">Semester 4</option>
-                        </select>
-                    </form>
-                </div>
             </div>
             <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
                 <table class="w-full text-sm text-left rtl:text-right text-gray-500">
                     <thead class="text-xs uppercase bg-slate-50 border-b">
                         <tr>
+                            <th scope="col" class="px-4 py-3">Semester</th>
                             <th scope="col" class="px-6 py-3">Kode Stase</th>
                             <th scope="col" class="px-6 py-3">Stase</th>
-                            <th scope="col" class="px-6 py-3">Ujian Kompetensi</th>
-                            <th scope="col" class="px-6 py-3">Nilai Akhir</th>
+                            <th scope="col" class="px-6 py-3">Jenis Penilaian</th>
+                            <th scope="col" class="px-6 py-3">Nilai Angka</th>
                         </tr>
                     </thead>
                     <tbody>
                         <tr class="bg-white border-b hover:bg-gray-100">
-                            <td class="w-6 p-4">IPD-1</td>
-                            <td class="px-6 py-4">Ilmu Penyakit Dalam</td>
+                            <td class="w-6 p-4">2</td>
+                            <td class="w-10 px-6 py-4">IPD</td>
+                            <td class="px-6 py-4">Kepaniteraan Ilmu Penyakit Dalam</td>
+                            <td class="px-6 py-4">CBT</td>
+                            <td class="px-6 py-4">{{ detail.IPD|default_if_none:"-" }}</td>
+                        </tr>
+
+                        <tr class="bg-white border-b hover:bg-gray-100">
+                            <td class="w-6 p-4">2</td>
+                            <td class="w-10 px-6 py-4">IKA</td>
+                            <td class="px-6 py-4">Ilmu Kesehatan Anak</td>
+                            <td class="px-6 py-4">CBT</td>
+                            <td class="px-6 py-4">{{ detail.IKA|default_if_none:"-" }}</td>
+                        </tr>
+
+                        <tr class="bg-white border-b hover:bg-gray-100">
+                            <td class="w-6 p-4">2</td>
+                            <td class="w-10 px-6 py-4">RAD</td>
+                            <td class="px-6 py-4">Kepaniteraan Radiologi</td>
+                            <td class="px-6 py-4">CBT</td>
+                            <td class="px-6 py-4">{{ detail.RAD|default_if_none:"-" }}</td>
+                        </tr>
+
+                        <tr class="bg-white border-b hover:bg-gray-100">
+                            <td class="w-6 p-4">2</td>
+                            <td class="w-10 px-6 py-4">SRM</td>
+                            <td class="px-6 py-4">Kepaniteraan Saraf dan Rehabilitasi Medik</td>
                             <td class="px-6 py-4">MCQ-CBT</td>
-                            <td class="px-6 py-4">56</td>
+                            <td class="px-6 py-4">{{ detail.SRM|default_if_none:"-" }}</td>
                         </tr>
 
                         <tr class="bg-white border-b hover:bg-gray-100">
-                            <td class="w-6 p-4">IPD-1</td>
-                            <td class="px-6 py-4">Ilmu Penyakit Dalam</td>
-                            <td class="px-6 py-4">Referat</td>
-                            <td class="px-6 py-4">56</td>
+                            <td class="w-6 p-4">2</td>
+                            <td class="w-10 px-6 py-4">KDK</td>
+                            <td class="px-6 py-4">Kepaniteraan Dermatologi dan Venerologi</td>
+                            <td class="px-6 py-4">Vignette-CBT</td>
+                            <td class="px-6 py-4">{{ detail.KDK|default_if_none:"-" }}</td>
                         </tr>
 
                         <tr class="bg-white border-b hover:bg-gray-100">
-                            <td class="w-6 p-4">PED-1</td>
-                            <td class="px-6 py-4">Ilmu Pediatri</td>
+                            <td class="w-6 p-4">2</td>
+                            <td class="w-10 px-6 py-4">MPK</td>
+                            <td class="px-6 py-4">Manajemen Pelayanan Kesehatan</td>
+                            <td class="px-6 py-4">CBD</td>
+                            <td class="px-6 py-4">{{ detail.MPK|default_if_none:"-" }}</td>
+                        </tr>
+
+                        <tr class="bg-white border-b hover:bg-gray-100">
+                            <td class="w-6 p-4">3</td>
+                            <td class="w-10 px-6 py-4">ANT</td>
+                            <td class="px-6 py-4">Anestesiologi dan Terapi Insentif</td>
+                            <td class="px-6 py-4">CBT</td>
+                            <td class="px-6 py-4">{{ detail.ANT|default_if_none:"-" }}</td>
+                        </tr>
+
+                        <tr class="bg-white border-b hover:bg-gray-100">
+                            <td class="w-6 p-4">3</td>
+                            <td class="w-10 px-6 py-4">MAT</td>
+                            <td class="px-6 py-4">Ilmu Kesehatan Mata</td>
                             <td class="px-6 py-4">MCQ-CBT</td>
-                            <td class="px-6 py-4">56</td>
+                            <td class="px-6 py-4">{{ detail.MAT|default_if_none:"-" }}</td>
                         </tr>
 
                         <tr class="bg-white border-b hover:bg-gray-100">
-                            <td class="w-6 p-4">PED-1</td>
-                            <td class="px-6 py-4">Ilmu Pediatri</td>
-                            <td class="px-6 py-4">Referat</td>
-                            <td class="px-6 py-4">56</td>
+                            <td class="w-6 p-4">3</td>
+                            <td class="w-10 px-6 py-4">IKM</td>
+                            <td class="px-6 py-4">Ilmu Kesehatan Masyarakat</td>
+                            <td class="px-6 py-4">CBT-Vignette</td>
+                            <td class="px-6 py-4">{{ detail.IKM|default_if_none:"-" }}</td>
                         </tr>
 
                         <tr class="bg-white border-b hover:bg-gray-100">
-                            <td class="w-6 p-4">RAD-1</td>
-                            <td class="px-6 py-4">Ilmu Radiologi</td>
+                            <td class="w-6 p-4">3</td>
+                            <td class="w-10 px-6 py-4">THT-KL</td>
+                            <td class="px-6 py-4">Penyakit THT-KL</td>
+                            <td class="px-6 py-4">CBT-Vignette</td>
+                            <td class="px-6 py-4">{{ detail.THTKL|default_if_none:"-" }}</td>
+                        </tr>
+
+                        <tr class="bg-white border-b hover:bg-gray-100">
+                            <td class="w-6 p-4">3</td>
+                            <td class="w-10 px-6 py-4">KJW</td>
+                            <td class="px-6 py-4">Ilmu Kedokteran Jiwa</td>
                             <td class="px-6 py-4">MCQ-CBT</td>
-                            <td class="px-6 py-4">56</td>
+                            <td class="px-6 py-4">{{ detail.KJW|default_if_none:"-" }}</td>
                         </tr>
 
                         <tr class="bg-white border-b hover:bg-gray-100">
-                            <td class="w-6 p-4">RAD-1</td>
-                            <td class="px-6 py-4">Ilmu Radiologi</td>
-                            <td class="px-6 py-4">Telaah Kritis Ilmiah</td>
-                            <td class="px-6 py-4">56</td>
+                            <td class="w-6 p-4">3</td>
+                            <td class="w-10 px-6 py-4">OT-2</td>
+                            <td class="px-6 py-4">Studi Kasus Kedokteran Islam Omah Tauhid</td>
+                            <td class="px-6 py-4">MCQ</td>
+                            <td class="px-6 py-4">{{ detail.OT2|default_if_none:"-" }}</td>
                         </tr>
 
                         <tr class="bg-white border-b hover:bg-gray-100">
-                            <td class="w-6 p-4">SRM-1</td>
-                            <td class="px-6 py-4">Ilmu Saraf & Rehabilitasi Medik</td>
-                            <td class="px-6 py-4">MCQ-CBT</td>
-                            <td class="px-6 py-4">56</td>
+                            <td class="w-6 p-4">4</td>
+                            <td class="w-10 px-6 py-4">BED</td>
+                            <td class="px-6 py-4">Ilmu Bedah</td>
+                            <td class="px-6 py-4">Refleksi Kasus-CBT</td>
+                            <td class="px-6 py-4">{{ detail.BED|default_if_none:"-" }}</td>
                         </tr>
 
                         <tr class="bg-white border-b hover:bg-gray-100">
-                            <td class="w-6 p-4">SRM-1</td>
-                            <td class="px-6 py-4">Ilmu Saraf & Rehabilitasi Medik</td>
-                            <td class="px-6 py-4">Telaah Kritis Ilmiah</td>
-                            <td class="px-6 py-4">56</td>
+                            <td class="w-6 p-4">4</td>
+                            <td class="w-10 px-6 py-4">OBG</td>
+                            <td class="px-6 py-4">Ilmu Kebidanan dan Kandungan</td>
+                            <td class="px-6 py-4">CBT</td>
+                            <td class="px-6 py-4">{{ detail.OBG|default_if_none:"-" }}</td>
+                        </tr>
+
+                        <tr class="bg-white border-b hover:bg-gray-100">
+                            <td class="w-6 p-4">4</td>
+                            <td class="w-10 px-6 py-4">FOR</td>
+                            <td class="px-6 py-4">Kepaniteraan Kedokteran Forensik</td>
+                            <td class="px-6 py-4">Nilai Akhir</td>
+                            <td class="px-6 py-4">{{ detail.FOR|default_if_none:"-" }}</td>
+                        </tr>
+
+                        <tr class="bg-white border-b hover:bg-gray-100">
+                            <td class="w-6 p-4">4</td>
+                            <td class="w-10 px-6 py-4">MOI</td>
+                            <td class="px-6 py-4">Modul Integrasi</td>
+                            <td class="px-6 py-4">Nilai Akhir</td>
+                            <td class="px-6 py-4">{{ detail.MOI|default_if_none:"-" }}</td>
+                        </tr>
+
+                        <tr class="bg-white border-b hover:bg-gray-100">
+                            <td class="w-6 p-4">4</td>
+                            <td class="w-10 px-6 py-4">ELK</td>
+                            <td class="px-6 py-4">Elektif Magang</td>
+                            <td class="px-6 py-4">Nilai Akhir</td>
+                            <td class="px-6 py-4">{{ detail.ELK|default_if_none:"-" }}</td>
                         </tr>
                     </tbody>
                 </table>
+            </div>
+        </div>
+
+        {% comment %} Delete Record {% endcomment %}
+        <button type="button" class="w-36 px-5 py-2.5 text-sm font-medium text-white inline-flex items-center bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 rounded-lg text-center" data-modal-toggle="deleteModal">
+            <svg class="w-4 h-4 text-white me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                <path fill-rule="evenodd" d="M8.586 2.586A2 2 0 0 1 10 2h4a2 2 0 0 1 2 2v2h3a1 1 0 1 1 0 2v12a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V8a1 1 0 0 1 0-2h3V4a2 2 0 0 1 .586-1.414ZM10 6h4V4h-4v2Zm1 4a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Zm4 0a1 1 0 1 0-2 0v8a1 1 0 1 0 2 0v-8Z" clip-rule="evenodd"/>
+            </svg>  
+            Hapus Data
+        </button>
+
+        {% comment %} Delete Modal {% endcomment %}
+        <div id="deleteModal" tabindex="-1" class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 w-full md:inset-0 h-modal md:h-full">
+            <div class="relative p-4 w-full max-w-md h-full md:h-auto">
+                <div class="relative bg-white rounded-lg shadow">
+                    <button type="button" class="absolute top-3 right-2.5 text-gray-400 bg-transparent hover:bg-gray-200 rounded-lg text-sm p-1.5 ml-auto inline-flex items-center data-modal-toggle="deleteModal">
+                    </button>
+                    <div class="p-6 text-center">
+                        <h3 class="mb-5 text-lg font-normal text-gray-500 dark:text-gray-400">Apakah Anda yakin untuk menghapus data ini?</h3>
+                        <button type="button" class="text-white bg-red-600 hover:bg-red-800 focus:ring-4 focus:outline-none focus:ring-red-300 dark:focus:ring-red-800 font-medium rounded-lg text-sm inline-flex items-center px-5 py-2.5 text-center mr-2" onclick="deleteData('{{ detail.NIM }}')">Hapus Data</button>
+                        <button type="button" class="text-gray-500 bg-white hover:bg-gray-100 focus:ring-4 focus:outline-none focus:ring-gray-200 rounded-lg border border-gray-200 text-sm font-medium px-5 py-2.5 hover:text-gray-900 focus:z-10" data-modal-toggle="deleteModal">Batalkan</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>

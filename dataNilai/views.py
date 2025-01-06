@@ -52,8 +52,6 @@ def upload_nilai(request):
             csv_nilai = request.FILES['file']
             csv_nilai = io.TextIOWrapper(csv_nilai.file, encoding='utf-8')
             reader = csv.DictReader(csv_nilai)
-            
-            print(f"CSV Header: {reader.fieldnames}")
 
             #Extract data untuk setiap row
             with transaction.atomic():

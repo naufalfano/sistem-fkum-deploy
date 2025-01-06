@@ -97,7 +97,7 @@
             </svg>
             <div class="flex flex-col justify-start items-start gap-1">
               <span class="text-slate-500 text-[16px] leading-snug">Jumlah Mahasiswa Lulus</span>
-              <span class="text-[30px] font-bold leading-none">150</span>
+              <span class="text-[30px] font-bold leading-none">{{ ukmppd_lulus|default:0 }}</span>
             </div>
           </div>
           {% comment %} CARD TWO {% endcomment %}
@@ -107,49 +107,45 @@
             </svg>
             <div class="flex flex-col justify-start items-start gap-1">
               <span class="text-slate-500 text-[16px] leading-snug">Jumlah Mahasiswa Retake</span>
-              <span class="text-[30px] font-bold leading-none">6</span>
+              <span class="text-[30px] font-bold leading-none">{{ ukmppd_retake|default:0 }}</span>
             </div>
           </div>
         </div>
       </div>
       {% comment %} Tabel Nilai {% endcomment %}
-      <div class="grid grid-cols-4 gap-2">
-        <div class="col-span-2">         
-          <div class="w-full max-w-sm min-w-[200px]">
-            <div class="relative flex items-center">
-              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="absolute w-5 h-5 top-2.5 left-2.5 text-slate-600">
-                <path fill-rule="evenodd" d="M10.5 3.75a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM2.25 10.5a8.25 8.25 0 1 1 14.59 5.28l4.69 4.69a.75.75 0 1 1-1.06 1.06l-4.69-4.69A8.25 8.25 0 0 1 2.25 10.5Z" clip-rule="evenodd" />
-              </svg>
-              <input
-              class="w-full bg-white placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-lg pl-10 pr-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300"
-              placeholder="Cari nama mahasiswa disini"/>
-              <button
-                class="rounded-lg bg-blue-600 py-2 px-4 border border-transparent text-center text-sm text-white focus:bg-blue-700 focus:shadow-none active:bg-blue-700 hover:bg-blue-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 ml-2"
-                type="button">
-                Search
-              </button> 
-            </div>
+      <form method="GET" action="{% url 'index' %}" class="grid">
+        <div class="justify-end inline-flex gap-2">         
+          <div class="w-full flex items-center relative">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="absolute w-5 h-5 left-3 text-slate-600">
+              <path fill-rule="evenodd" d="M10.5 3.75a6.75 6.75 0 1 0 0 13.5 6.75 6.75 0 0 0 0-13.5ZM2.25 10.5a8.25 8.25 0 1 1 14.59 5.28l4.69 4.69a.75.75 0 1 1-1.06 1.06l-4.69-4.69A8.25 8.25 0 0 1 2.25 10.5Z" clip-rule="evenodd" />
+            </svg>
+            <input
+            name = "query"
+            value = "{{ search_query|default:''}}"
+            class="w-full bg-gray-50 placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-lg pl-10 pr-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300"
+            placeholder="Cari nama atau NIM mahasiswa disini"/>
           </div>
+
+          <select name="periode_ukmppd" id="periode_ukmppd" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-3 py-1">
+            <option value="Semua Periode" {% if filter_periode == "Semua Periode" %} selected {% endif %}>Semua Periode</option>
+            {% for periode_value in periode_list %}
+              <option value="{{ periode_value }}" {% if filter_periode == periode_value %} selected {% endif %}>{{ periode_value }}</option>
+            {% endfor %}
+          </select>
+
+          <select name="status" id="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-3 py-1">
+            <option value="Semua" {% if filter_status == "Semua" %} selected {% endif %}>Semua Status</option>
+            <option value="Lulus" {% if filter_status == "Lulus" %}selected{% endif %}>Lulus</option>
+            <option value="Retake" {% if filter_status == "Retake" %}selected{% endif %}>Retake</option>
+          </select>
+
+          <button
+          class="rounded-lg bg-blue-600 py-2 px-4 border border-transparent text-center text-sm text-white focus:bg-blue-700 focus:shadow-none active:bg-blue-700 hover:bg-blue-700 active:shadow-none disabled:pointer-events-none disabled:opacity-50 ml-2"
+          type="submit">
+          Cari
+          </button>
         </div>
-        <div class="col-start-4 justify-end inline-flex gap-2">
-          <form class="max-w-md">
-            <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-4 py-2">
-              <option selected>Semua Periode</option>
-              <option value="US">Februari 2024</option>
-              <option value="CA">Februari 2024</option>
-              <option value="FR">Februari 2024</option>
-              <option value="DE">Februari 2024</option>
-            </select>
-          </form>
-          <form class="max-w-md">
-            <select id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-4 py-2">
-              <option selected>Semua Status</option>
-              <option value="US">Lulus</option>
-              <option value="CA">Retake</option>
-            </select>
-          </form>
-        </div>
-      </div>
+      </form>
 
       <div class="relative overflow-x-auto shadow-md sm:rounded-lg">
         <table class="w-full text-sm text-left rtl:text-right text-gray-500">
@@ -157,51 +153,50 @@
             <tr>
               <th scope="col" class="p-4">NIM</th>
               <th scope="col" class="px-6 py-3">Nama Mahasiswa</th>
-              <th scope="col" class="px-6 py-3">Tahun Ajaran</th>
+              <th scope="col" class="px-6 py-3">Angkatan</th>
               <th scope="col" class="px-6 py-3">Periode UKMPPD</th>
               <th scope="col" class="px-6 py-3">Hasil UKMPPD</th>
               <th scope="col" class="px-6 py-3"></th>
             </tr>
           </thead>
           <tbody>
-            {% for hasilUKMPPD in page_obj %}
-            <tr class="bg-white border-b hover:bg-gray-200">
-              <td class="w-4 p-4">{{hasilUKMPPD.NIM}}</td>
-              <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">{{hasilUKMPPD.nama_mahasiswa}}</th>
-              <td class="px-6 py-4">{{hasilUKMPPD.angkatan}}</td>
-              <td class="px-6 py-4">{{hasilUKMPPD.periode_ukmppd}}</td>
-              <td class="px-6 py-4">
-                {% if hasilUKMPPD.hasil_ukmppd == "Lulus" %}
-                <span class="bg-green-100 text-green-800 border-green-300 font-['Inter'] text-xs font-medium me-2 px-2.5 py-0.5 rounded">
-                  {{ hasilUKMPPD.hasil_ukmppd }}
-                </span>
-              {% elif hasilUKMPPD.hasil_ukmppd == "Retake" %}
-                <span class="bg-red-100 text-red-800 border-red-300 font-['Inter'] text-xs font-medium me-2 px-2.5 py-0.5 rounded">
-                  {{ hasilUKMPPD.hasil_ukmppd }}
-                </span>
-              {% else %}
-                <span class="bg-yellow-100 text-yellow-800 border-yellow-300 font-['Inter'] text-xs font-medium me-2 px-2.5 py-0.5 rounded">
-                  {{ hasilUKMPPD.hasil_ukmppd }}
-                </span>
-              {% endif %}
-              </td>
-              <td class="px-4 py-4">
-                <a href="detail-hasil/" class="font-medium hover:underline">
-                  <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M11 3C10.4477 3 10 3.44772 10 4C10 4.55228 10.4477 5 11 5H13.5858L7.29289 11.2929C6.90237 11.6834 6.90237 12.3166 7.29289 12.7071C7.68342 13.0976 8.31658 13.0976 8.70711 12.7071L15 6.41421V9C15 9.55228 15.4477 10 16 10C16.5523 10 17 9.55228 17 9V4C17 3.44772 16.5523 3 16 3H11Z" fill="#94A3B8" />
-                    <path d="M5 5C3.89543 5 3 5.89543 3 7V15C3 16.1046 3.89543 17 5 17H13C14.1046 17 15 16.1046 15 15V12C15 11.4477 14.5523 11 14 11C13.4477 11 13 11.4477 13 12V15H5V7L8 7C8.55228 7 9 6.55228 9 6C9 5.44772 8.55228 5 8 5H5Z" fill="#94A3B8" />
-                  </svg>
-                </a>
-              </td>
+            {% if page_obj.object_list %}
+              {% for dashboard in page_obj.object_list %}
+              <tr class="bg-white border-b hover:bg-gray-200">
+                <td class="w-4 p-4">{{dashboard.NIM}}</td>
+                <th scope="row" class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap">{{dashboard.nama_mahasiswa}}</th>
+                <td class="px-6 py-4">{{dashboard.angkatan}}</td>
+                <td class="px-6 py-4">{{dashboard.periode_ukmppd}}</td>
+                <td class="px-6 py-4">
+                {% if dashboard.hasil_ukmppd == 1 %}
+                  <span class="bg-green-100 text-green-800 border-green-300 font-['Inter'] text-xs font-medium me-2 px-2.5 py-0.5 rounded">Lulus</span>
+                {% elif dashboard.hasil_ukmppd == 0 %}
+                  <span class="bg-red-100 text-red-800 border-red-300 font-['Inter'] text-xs font-medium me-2 px-2.5 py-0.5 rounded">Retake</span>
+                {% endif %}
+                </td>
+                <td class="px-4 py-4">
+                  <a href="{% url 'detail-hasil-ukmppd' dashboard.NIM %}" class="font-medium hover:underline">
+                    <svg width="20" height="20" viewBox="0 0 20 20" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M11 3C10.4477 3 10 3.44772 10 4C10 4.55228 10.4477 5 11 5H13.5858L7.29289 11.2929C6.90237 11.6834 6.90237 12.3166 7.29289 12.7071C7.68342 13.0976 8.31658 13.0976 8.70711 12.7071L15 6.41421V9C15 9.55228 15.4477 10 16 10C16.5523 10 17 9.55228 17 9V4C17 3.44772 16.5523 3 16 3H11Z" fill="#94A3B8" />
+                      <path d="M5 5C3.89543 5 3 5.89543 3 7V15C3 16.1046 3.89543 17 5 17H13C14.1046 17 15 16.1046 15 15V12C15 11.4477 14.5523 11 14 11C13.4477 11 13 11.4477 13 12V15H5V7L8 7C8.55228 7 9 6.55228 9 6C9 5.44772 8.55228 5 8 5H5Z" fill="#94A3B8" />
+                    </svg>
+                  </a>
+                </td>
+              </tr>
+              {% endfor %}
+            {% else %}
+            <tr>
+              <td colspan="5" class="text-center py-4">Data tidak ditemukan</td>
             </tr>
-            {% endfor %}
+            {% endif %}
           </tbody>
         </table>
-        {% comment %}pagination{% endcomment %}
+
+        {% comment %} Table Pagination {% endcomment %}
         <nav class="flex items-center flex-column flex-wrap md:flex-row justify-between py-3" aria-label="Table navigation">
           <span class="pl-4 text-sm font-normal text-gray-500 :inline md:w-auto">Showing 
               <span class="font-semibold text-gray-900">{{ page_obj.start_index }}-{{ page_obj.end_index }}</span> of 
-              <span class="font-semibold text-gray-900">{{ page_obj.paginator.count }}</span>
+              <span class="font-semibold text-gray-900">{{ record_count }}</span>
           </span>
           <ul class="pr-3 inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
               {% if page_obj.has_previous %}
@@ -212,7 +207,16 @@
                           </svg>
                       </a>
                   </li>
+              {% else %}
+                <li>
+                  <a href="#" class="flex items-center justify-center px-1 h-7 ms-0 leading-tight text-gray-300 bg-gray-100 border border-gray-300 rounded-s-lg" disabled>
+                    <svg class="w-6 h-6 text-gray-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                      <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m14 8-4 4 4 4" />
+                    </svg>
+                  </a>
+                </li>
               {% endif %}
+
               {% for num in page_obj.paginator.page_range %}
                   {% if page_obj.number == num %}
                       <li>
@@ -228,18 +232,27 @@
                       </li>
                   {% endif %}
               {% endfor %}
+
               {% if page_obj.has_next %}
-                  <li>
-                      <a href="?page={{ page_obj.next_page_number }}" class="flex items-center justify-center px-1 h-7 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700">
-                          <svg class="w-6 h-6 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                              <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m10 16 4-4-4-4" />
-                          </svg>
-                      </a>
-                  </li>
+                <li>
+                    <a href="?page={{ page_obj.next_page_number }}" class="flex items-center justify-center px-1 h-7 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700">
+                        <svg class="w-6 h-6 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m10 16 4-4-4-4" />
+                        </svg>
+                    </a>
+                </li>
+              {% else %}
+                <li>
+                  <a href="#" class="flex items-center justify-center px-1 h-7 leading-tight text-gray-300 bg-grey-100 border border-gray-300 rounded-e-lg" disabled>
+                      <svg class="w-6 h-6 text-gray-300" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                          <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m10 16 4-4-4-4" />
+                      </svg>
+                  </a>
+                </li>
               {% endif %}
+
           </ul>
         </nav>
-
       </div>
     </div>
   </body>

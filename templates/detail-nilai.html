@@ -13,6 +13,7 @@
     <script src="https://unpkg.com/flowbite@1.4.7/dist/flowbite.js"></script>
 
     {% tailwind_css %}
+    
     <script>
         function deleteData(NIM) {
         window.location.href = "{% url 'delete-nilai' 'NIM_PLACEHOLDER' %}".replace('NIM_PLACEHOLDER', NIM);
