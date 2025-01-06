@@ -36,7 +36,8 @@ def index(request):
     page_number = request.GET.get('page')
     page_obj = paginator.get_page(page_number)
     
-    record_count = dashboard.count()    
+    record_count = dashboard.count() 
+       
     #Widget Prediksi
     predict_lulus = nilaiMahasiswa.objects.filter(hasil_ukmppd = 1).count()
     predict_retake = nilaiMahasiswa.objects.filter(hasil_ukmppd = 0).count()
