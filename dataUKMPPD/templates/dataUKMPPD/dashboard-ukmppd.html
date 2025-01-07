@@ -7,7 +7,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-    <title>Data Kelulusan UKMPPD</title>
+    <title>Data Hasil UKMPPD CBT</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet" />
@@ -40,7 +40,7 @@
                 <svg class="w-6 h-6 text-blue-700" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                   <path fill-rule="evenodd" d="M9 7V2.221a2 2 0 0 0-.5.365L4.586 6.5a2 2 0 0 0-.365.5H9Zm2 0V2h7a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9h5a2 2 0 0 0 2-2Zm-1 9a1 1 0 1 0-2 0v2a1 1 0 1 0 2 0v-2Zm2-5a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1Zm4 4a1 1 0 1 0-2 0v3a1 1 0 1 0 2 0v-3Z" clip-rule="evenodd" />
                 </svg>
-                <span class="text-blue-700 text-[14px] font-medium font-['Inter'] leading-normal">Data Kelulusan UKMPPD</span>
+                <span class="text-blue-700 text-[14px] font-medium font-['Inter'] leading-normal">Data Hasil UKMPPD CBT</span>
               </li>
             </a>
 
@@ -60,11 +60,14 @@
               <span class="text-slate-600 text-sm font-semibold">{{ user.username }}</span>
               <span class="text-slate-500 text-xs font-normal">{{ user.email }}</span>
           </div>
-          <a href="{% url 'logout' %}">
-              <svg width="20" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                  <path d="M17 16L21 12M21 12L17 8M21 12L7 12M13 16V17C13 18.6569 11.6569 20 10 20H6C4.34315 20 3 18.6569 3 17V7C3 5.34315 4.34315 4 6 4H10C11.6569 4 13 5.34315 13 7V8" stroke="#EF4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-              </svg>
-          </a>
+          <form action="{% url 'logout' %}" method="post">
+            {% csrf_token %}
+            <button type="submit" class="bg-transparent border-none p-0 cursor-pointer">
+                <svg width="20" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M17 16L21 12M21 12L17 8M21 12L7 12M13 16V17C13 18.6569 11.6569 20 10 20H6C4.34315 20 3 18.6569 3 17V7C3 5.34315 4.34315 4 6 4H10C11.6569 4 13 5.34315 13 7V8" stroke="#EF4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                </svg>
+            </button>
+          </form>
       </div>
       </div>
     </aside>
@@ -74,7 +77,7 @@
       <div class="flex items-center justify-between">
         <span class="text-slate-700 text-2xl font-semibold font-['Inter'] leading-loose">Aplikasi Prediksi dan Sistem Pakar Kelulusan UKMPPD</span>
         <a href="form-ukmppd/" class="bg-blue-600 hover:bg-blue-700 rounded-lg justify-center items-center flex gap-3 px-5 h-[37px]">
-          <span class="text-white text-sm font-base font-['Inter'] leading-[21px]">Unggah Hasil UKMPPD</span>
+          <span class="text-white text-sm font-base font-['Inter'] leading-[21px]">Unggah Hasil UKMPPD CBT</span>
           <svg class="w-5 h-5 text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="10" height="10" fill="none" viewBox="0 0 24 24">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 12h14m-7 7V5" />
           </svg>
@@ -85,7 +88,7 @@
       <div class="flex flex-col gap-4">
         {% comment %} Header {% endcomment %}
         <div class="flex justify-between">
-          <span class="text-slate-600 text-lg font-medium font-['Inter'] leading-7">Data Prediksi Kelulusan UKMPPD</span>
+          <span class="text-slate-600 text-lg font-medium font-['Inter'] leading-7">Data Hasil UKMPPD CBT</span>
         </div>
         {% comment %} Card {% endcomment %}
         <div class="grid md:grid-cols-2 gap-14">

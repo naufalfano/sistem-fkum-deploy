@@ -37,7 +37,7 @@
                             <svg class="w-6 h-6 text-slate-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
                                 <path fill-rule="evenodd" d="M9 7V2.221a2 2 0 0 0-.5.365L4.586 6.5a2 2 0 0 0-.365.5H9Zm2 0V2h7a2 2 0 0 1 2 2v16a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V9h5a2 2 0 0 0 2-2Zm-1 9a1 1 0 1 0-2 0v2a1 1 0 1 0 2 0v-2Zm2-5a1 1 0 0 1 1 1v6a1 1 0 1 1-2 0v-6a1 1 0 0 1 1-1Zm4 4a1 1 0 1 0-2 0v3a1 1 0 1 0 2 0v-3Z" clip-rule="evenodd"/>
                             </svg>
-                            <span class="text-slate-400 text-[14px] font-medium font-['Inter'] leading-normal">Data Kelulusan UKMPPD</span>
+                            <span class="text-slate-400 text-[14px] font-medium font-['Inter'] leading-normal">Data Hasil UKMPPD CBT</span>
                         </li>
                     </a>
 
@@ -58,11 +58,14 @@
                     <span class="text-slate-600 text-sm font-semibold">{{ user.username }}</span>
                     <span class="text-slate-500 text-xs font-normal">{{ user.email }}</span>
                 </div>
-                <a href="{% url 'logout' %}">
-                    <svg width="20" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M17 16L21 12M21 12L17 8M21 12L7 12M13 16V17C13 18.6569 11.6569 20 10 20H6C4.34315 20 3 18.6569 3 17V7C3 5.34315 4.34315 4 6 4H10C11.6569 4 13 5.34315 13 7V8" stroke="#EF4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
-                    </svg>
-                </a>
+                <form action="{% url 'logout' %}" method="post">
+                    {% csrf_token %}
+                    <button type="submit" class="bg-transparent border-none p-0 cursor-pointer">
+                        <svg width="20" height="18" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M17 16L21 12M21 12L17 8M21 12L7 12M13 16V17C13 18.6569 11.6569 20 10 20H6C4.34315 20 3 18.6569 3 17V7C3 5.34315 4.34315 4 6 4H10C11.6569 4 13 5.34315 13 7V8" stroke="#EF4444" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+                </form>
             </div>
         </div>
     </aside>
@@ -75,28 +78,6 @@
             <div class="space-y-2">
                 <div class="text-lg font-semibold text-slate-700">Pembaruan Model Prediksi</div>
                 <div class="text-sm font-normal text-slate-500 text-wrap text-justify">Pembaruan model prediksi membutuhkan waktu untuk melakukan pemrosesan pada data baru.</div>
-            </div>
-            
-            <div class="border-slate-200 border-2 w-full p-4 rounded-lg flex-row gap-4 items-center">
-                <div class="grid grid-cols-6 gap-2 items-center">
-                    <div class="col-span-4">
-                        <div class="text-md font-semibold text-slate-600">Model Prediksi Semester 1</div>
-                        <div class="text-xs font-normal text-slate-400">Akurasi Model Prediksi Saat Ini:
-                            <span class="font-semibold text-slate-500 ml-1">94%</span>
-                        </div>
-                    </div>
-                    
-                    <div class="col-span-2 justify-items-end">
-                        <div class="items-center">
-                            <button type="button" class="px-3 py-2 text-xs font-medium justify-center text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center">
-                            <svg class="w-4 h-4 text-white me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.651 7.65a7.131 7.131 0 0 0-12.68 3.15M18.001 4v4h-4m-7.652 8.35a7.13 7.13 0 0 0 12.68-3.15M6 20v-4h4"/>
-                            </svg>  
-                            Training Model
-                            </button>
-                        </div>
-                    </div>
-                </div>
             </div>
 
             <div class="border-slate-200 border-2 w-full p-4 rounded-lg flex-row gap-4 items-center">
