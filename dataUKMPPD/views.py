@@ -30,8 +30,8 @@ def upload_ukmppd(request):
                         'IPD', 'IKA', 'RAD', 'SRM', 'KDK', 'MPK', 'ANT', 'MAT',
                         'IKM', 'THTKL', 'KJW', 'OT2', 'BED', 'OBG', 'FOR', 'MOI', 'ELK']
 
-                    nilai_dict = {field: float(row.get(field, 0)) for field in nilai_stase} 
-                    
+                    nilai_dict = {field: float(row.get(field, '0').replace(',', '.')) for field in nilai_stase} 
+
                     hasil_ukmppd_get = row.get('hasil_ukmppd')
                     hasil_ukmppd = 1 if hasil_ukmppd_get == 'Lulus' else 0
                     
