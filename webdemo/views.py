@@ -17,18 +17,18 @@ def index(request):
     
     record_count = nilaiMahasiswa.objects.all().count()
     angkatan_list = nilaiMahasiswa.objects.values_list('angkatan', flat=True).distinct()
-    search_query = request.GET.get('query')
-    filter_angkatan = request.GET.get('angkatan')
-    filter_status = request.GET.get('status')
+    nilai_search_query = request.GET.get('query')
+    nilai_filter_angkatan = request.GET.get('angkatan')
+    nilai_filter_status = request.GET.get('status')
     
-    if search_query:
-        dashboard = dashboard.filter(Q(nama_mahasiswa__icontains = search_query) | Q(NIM__icontains = search_query))
-    if filter_angkatan and filter_angkatan != 'Semua Angkatan':
-        dashboard = dashboard.filter(angkatan = filter_angkatan)
-    if filter_status and filter_status != 'Semua':
-        if filter_status == 'Lulus':
+    if nilai_search_query:
+        dashboard = dashboard.filter(Q(nama_mahasiswa__icontains = nilai_search_query) | Q(NIM__icontains = nilai_search_query))
+    if nilai_filter_angkatan and nilai_filter_angkatan != 'Semua Angkatan':
+        dashboard = dashboard.filter(angkatan = nilai_filter_angkatan)
+    if nilai_filter_status and nilai_filter_status != 'Semua':
+        if nilai_filter_status == 'Lulus':
             dashboard = dashboard.filter(hasil_ukmppd = 1)
-        elif filter_status == 'Retake':
+        elif nilai_filter_status == 'Retake':
             dashboard = dashboard.filter(hasil_ukmppd = 0)  
                     
     #Pagination
@@ -46,9 +46,9 @@ def index(request):
         'page_obj': page_obj,
         'record_count': record_count,
         'angkatan_list': angkatan_list,
-        'search_query': search_query,
-        'filter_angkatan': filter_angkatan,
-        'filter_status': filter_status,
+        'nilai_search_query': nilai_search_query,
+        'nilai_filter_angkatan': nilai_filter_angkatan,
+        'nilai_filter_status': nilai_filter_status,
         'predict_lulus': predict_lulus,
         'predict_retake': predict_retake,
     }

@@ -137,21 +137,21 @@
               </svg>
               <input
               name = "query"
-              value = "{{ search_query|default:''}}"
+              value = "{{ nilai_search_query|default:''}}"
               class="w-full bg-gray-50 placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-lg pl-10 pr-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300"
               placeholder="Cari nama atau NIM mahasiswa disini"/>
             </div>
             <select name="angkatan" id="angkatan" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-3 py-1">
-              <option value="Semua Angkatan" {% if filter_angkatan == "Semua Angkatan" %} selected {% endif %}>Semua Angkatan</option>
+              <option value="Semua Angkatan" {% if nilai_filter_angkatan == "Semua Angkatan" %} selected {% endif %}>Semua Angkatan</option>
               {% for angkatan_value in angkatan_list %}
-                <option value="{{ angkatan_value }}" {% if filter_angkatan == angkatan_value %} selected {% endif %}>{{ angkatan_value }}</option>
+                <option value="{{ angkatan_value }}" {% if nilai_filter_angkatan == angkatan_value %} selected {% endif %}>{{ angkatan_value }}</option>
               {% endfor %}
             </select>
 
             <select name="status" id="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-3 py-1">
-              <option value="Semua" {% if filter_status == "Semua" %} selected {% endif %}>Semua Status</option>
-              <option value="Lulus" {% if filter_status == "Lulus" %}selected{% endif %}>Lulus</option>
-              <option value="Retake" {% if filter_status == "Retake" %}selected{% endif %}>Retake</option>
+              <option value="Semua" {% if nilai_filter_status == "Semua" %} selected {% endif %}>Semua Status</option>
+              <option value="Lulus" {% if nilai_filter_status == "Lulus" %}selected{% endif %}>Lulus</option>
+              <option value="Retake" {% if nilai_filter_status == "Retake" %}selected{% endif %}>Retake</option>
             </select>
 
             <button

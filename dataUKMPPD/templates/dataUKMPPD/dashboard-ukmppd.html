@@ -116,7 +116,7 @@
         </div>
       </div>
       {% comment %} Tabel Nilai {% endcomment %}
-      <form method="GET" action="{% url 'index' %}" class="grid">
+      <form method="GET" action="{% url 'index_ukmppd' %}" class="grid">
         <div class="justify-end inline-flex gap-2">         
           <div class="w-full flex items-center relative">
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="absolute w-5 h-5 left-3 text-slate-600">
@@ -124,22 +124,22 @@
             </svg>
             <input
             name = "query"
-            value = "{{ search_query|default:''}}"
+            value = "{{ ukmppd_search_query|default:''}}"
             class="w-full bg-gray-50 placeholder:text-slate-400 text-slate-700 text-sm border border-slate-200 rounded-lg pl-10 pr-3 py-2 transition duration-300 ease focus:outline-none focus:border-slate-400 hover:border-slate-300"
             placeholder="Cari nama atau NIM mahasiswa disini"/>
           </div>
 
           <select name="periode_ukmppd" id="periode_ukmppd" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-3 py-1">
-            <option value="Semua Periode" {% if filter_periode == "Semua Periode" %} selected {% endif %}>Semua Periode</option>
+            <option value="Semua Periode" {% if ukmppd_filter_periode == "Semua Periode" %} selected {% endif %}>Semua Periode</option>
             {% for periode_value in periode_list %}
-              <option value="{{ periode_value }}" {% if filter_periode == periode_value %} selected {% endif %}>{{ periode_value }}</option>
+              <option value="{{ periode_value }}" {% if ukmppd_filter_periode == periode_value %} selected {% endif %}>{{ periode_value }}</option>
             {% endfor %}
           </select>
 
           <select name="status" id="status" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block pl-3 py-1">
-            <option value="Semua" {% if filter_status == "Semua" %} selected {% endif %}>Semua Status</option>
-            <option value="Lulus" {% if filter_status == "Lulus" %}selected{% endif %}>Lulus</option>
-            <option value="Retake" {% if filter_status == "Retake" %}selected{% endif %}>Retake</option>
+            <option value="Semua" {% if ukmppd_filter_status == "Semua" %} selected {% endif %}>Semua Status</option>
+            <option value="Lulus" {% if ukmppd_filter_status == "Lulus" %}selected{% endif %}>Lulus</option>
+            <option value="Retake" {% if ukmppd_filter_status == "Retake" %}selected{% endif %}>Retake</option>
           </select>
 
           <button

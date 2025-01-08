@@ -63,18 +63,18 @@ def dashboardUKMPPD(request):
     angkatan_list = hasilUKMPPD.objects.values_list('angkatan', flat=True).distinct()
     periode_list = hasilUKMPPD.objects.values_list('periode_ukmppd', flat=True).distinct()
     
-    search_query = request.GET.get('query')
-    filter_periode = request.GET.get('periode_ukmppd')
-    filter_status = request.GET.get('status')
+    ukmppd_search_query = request.GET.get('query')
+    ukmppd_filter_periode = request.GET.get('periode_ukmppd')
+    ukmppd_filter_status = request.GET.get('status')
     
-    if search_query:
-        dashboard = dashboard.filter(Q(nama_mahasiswa__icontains = search_query) | Q(NIM__icontains = search_query))
-    if filter_periode and filter_periode != 'Semua Periode':
-        dashboard = dashboard.filter(periode_ukmppd = filter_periode)
-    if filter_status and filter_status != 'Semua':
-        if filter_status == 'Lulus':
+    if ukmppd_search_query:
+        dashboard = dashboard.filter(Q(nama_mahasiswa__icontains = ukmppd_search_query) | Q(NIM__icontains = ukmppd_search_query))
+    if ukmppd_filter_periode and ukmppd_filter_periode != 'Semua Periode':
+        dashboard = dashboard.filter(periode_ukmppd = ukmppd_filter_periode)
+    if ukmppd_filter_status and ukmppd_filter_status != 'Semua':
+        if ukmppd_filter_status == 'Lulus':
             dashboard = dashboard.filter(hasil_ukmppd = 1)
-        elif filter_status == 'Retake':
+        elif ukmppd_filter_status == 'Retake':
             dashboard = dashboard.filter(hasil_ukmppd = 0)  
     
     #Pagination
@@ -91,9 +91,9 @@ def dashboardUKMPPD(request):
         'record_count': record_count,
         'angkatan_list': angkatan_list,
         'periode_list': periode_list,
-        'search_query': search_query,
-        'filter_periode': filter_periode,
-        'filter_status': filter_status,
+        'ukmppd_search_query': ukmppd_search_query,
+        'ukmppd_filter_periode': ukmppd_filter_periode,
+        'ukmppd_filter_status': ukmppd_filter_status,
         'ukmppd_lulus': ukmppd_lulus,
         'ukmppd_retake': ukmppd_retake,
     } 
