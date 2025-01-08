@@ -65,7 +65,10 @@ def upload_nilai(request):
                         'IPD', 'IKA', 'RAD', 'SRM', 'KDK', 'MPK', 'ANT', 'MAT',
                         'IKM', 'THTKL', 'KJW', 'OT2', 'BED', 'OBG', 'FOR', 'MOI', 'ELK']
                     
-                    nilai_dict = {field: float(row.get(field, 0)) for field in nilai_stase}
+                    nilai_dict = {
+                        field: float(row.get(field, '0').replace(',', '.')) if row.get(field, '0').replace(',', '.') != '' else 0.0
+                        for field in nilai_stase
+                    }                    
                     
                     instance, created = nilaiMahasiswa.objects.update_or_create(
                         NIM = NIM,
