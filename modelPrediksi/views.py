@@ -101,7 +101,7 @@ def modelPrediksi(request):
         RetrainLog.objects.create(model_semester=semester, f1_score=mean_f1)
 
         messages.success(request, f'Model Semester {semester} telah berhasil diperbarui')
-        return redirect('index')
+        return redirect('index_prediksi')
 
     # Get the latest retraining log entry for each semester
     latest_f1_score = {
