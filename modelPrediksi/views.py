@@ -1,6 +1,7 @@
 from django.shortcuts import render, redirect
 from dataUKMPPD.models import hasilUKMPPD
 from dataNilai.models import nilaiMahasiswa
+from dataNilai.views import find_similar_case
 from .models import RetrainLog
 import numpy as np
 import pandas as pd
@@ -93,8 +94,15 @@ def modelPrediksi(request):
         with transaction.atomic():
             for nilai in nilaiMahasiswa.objects.filter(semester=semester):
                 update_data = {field: getattr(nilai, field) for field in fields}
+                hasil_ukmppd = model.predict([list(update_data.values())])[0]
                 
-                nilai.hasil_ukmppd = model.predict([list(update_data.values())])[0]
+                solution = ""
+                if hasil_ukmppd == 0:
+                    nilai_dict = {field: getattr(nilai, field) for field in fields}
+                    solution = find_similar_case(nilai_dict, semester)
+
+                nilai.hasil_ukmppd = hasil_ukmppd
+                nilai.solution = solution
                 nilai.save()
 
         # Save retraining log
