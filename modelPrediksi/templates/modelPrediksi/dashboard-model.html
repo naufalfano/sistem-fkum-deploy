@@ -12,6 +12,41 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet"/>
     {% tailwind_css %}
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            const latestF1Scores = document.querySelectorAll('.latest-f1-score-sem-2, .latest-f1-score-sem-3, .latest-f1-score-sem-4');
+            latestF1Scores.forEach(function(span) {
+                const score = parseFloat(span.textContent);
+                if (!isNaN(score)) {
+                    span.textContent = (score * 100).toFixed(2);
+                }
+            });
+    
+            const f1ScoresSem2 = document.querySelectorAll('.f1-score-sem-2');
+            f1ScoresSem2.forEach(function(span) {
+                const score = parseFloat(span.textContent);
+                if (!isNaN(score)) {
+                    span.textContent = (score * 100).toFixed(2);
+                }
+            });
+    
+            const f1ScoresSem3 = document.querySelectorAll('.f1-score-sem-3');
+            f1ScoresSem3.forEach(function(span) {
+                const score = parseFloat(span.textContent);
+                if (!isNaN(score)) {
+                    span.textContent = (score * 100).toFixed(2);
+                }
+            });
+    
+            const f1ScoresSem4 = document.querySelectorAll('.f1-score-sem-4');
+            f1ScoresSem4.forEach(function(span) {
+                const score = parseFloat(span.textContent);
+                if (!isNaN(score)) {
+                    span.textContent = (score * 100).toFixed(2);
+                }
+            });
+        });
+    </script>
 </head>
 <body class="bg-slate-100 font-['Inter']">
     <aside id="default-sidebar" class="fixed top-0 left-0 z-40 w-64 h-screen transition-transform -translate-x-full sm:translate-x-0" aria-label="Sidebar">
@@ -81,23 +116,55 @@
                 <div class="text-sm font-normal text-slate-500 text-wrap text-justify">Pembaruan model prediksi membutuhkan waktu untuk melakukan pemrosesan pada data baru.</div>
             </div>
 
+            {% if messages %}
+                <div class="mt-4 mb-0">
+                    {% for message in messages %}
+                        {% if message.tags == 'error' %}
+                        <div id="alert-2" class="flex items-center p-4 mb-4 text-red-600 rounded-lg bg-red-50" role="alert">
+                            <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                                <path fill-rule="evenodd" d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm7.707-3.707a1 1 0 0 0-1.414 1.414L10.586 12l-2.293 2.293a1 1 0 1 0 1.414 1.414L12 13.414l2.293 2.293a1 1 0 0 0 1.414-1.414L13.414 12l2.293-2.293a1 1 0 0 0-1.414-1.414L12 10.586 9.707 8.293Z" clip-rule="evenodd"/>
+                            </svg>
+                            
+                            <div class="ms-3 text-sm font-medium">
+                                {{ message }}
+                            </div>
+                        </div>
+                        {% else %}
+                            <div id="alert-3" class="flex items-center p-4 mb-4 text-green-600 rounded-lg bg-green-50" role="alert">
+                                <svg class="flex-shrink-0 w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 24 24">
+                                    <path fill-rule="evenodd" d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm13.707-1.293a1 1 0 0 0-1.414-1.414L11 12.586l-1.793-1.793a1 1 0 0 0-1.414 1.414l2.5 2.5a1 1 0 0 0 1.414 0l4-4Z" clip-rule="evenodd"/>
+                                </svg>
+
+                                <div class="ms-3 text-sm font-medium">
+                                    {{ message }}
+                                </div>
+                            </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            {% endif %}
+
             <div class="border-slate-200 border-2 w-full p-4 rounded-lg flex-row gap-4 items-center">
                 <div class="grid grid-cols-6 gap-2 items-center">
                     <div class="col-span-4">
                         <div class="text-md font-semibold text-slate-600">Model Prediksi Semester 2</div>
-                        <div class="text-xs font-normal text-slate-400">Akurasi Model Prediksi Saat Ini:
-                            <span class="font-semibold text-slate-500 ml-1">94%</span>
+                        <div class="text-xs font-normal text-slate-400">Skor F1 Model Prediksi Saat Ini:
+                            <span class="font-semibold text-slate-500 ml-1 latest-f1-score-sem-2">{{ latest_f1_score.2|floatformat:2|default:0 }}</span><span class="font-semibold text-slate-500">%</span>
                         </div>
                     </div>
                     
                     <div class="col-span-2 justify-items-end">
                         <div class="items-center">
-                            <button type="button" class="px-3 py-2 text-xs font-medium justify-center text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center">
-                            <svg class="w-4 h-4 text-white me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.651 7.65a7.131 7.131 0 0 0-12.68 3.15M18.001 4v4h-4m-7.652 8.35a7.13 7.13 0 0 0 12.68-3.15M6 20v-4h4"/>
-                            </svg>  
-                            Training Model
-                            </button>
+                            <form method="post" action="{% url 'index' %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="semester" value="2">
+                                <button type="submit" class="px-3 py-2 text-xs font-medium justify-center text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center">
+                                    <svg class="w-4 h-4 text-white me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.651 7.65a7.131 7.131 0 0 0-12.68 3.15M18.001 4v4h-4m-7.652 8.35a7.13 7.13 0 0 0 12.68-3.15M6 20v-4h4"/>
+                                    </svg>  
+                                Training Model
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -106,20 +173,26 @@
             <div class="border-slate-200 border-2 w-full p-4 rounded-lg flex-row gap-4 items-center">
                 <div class="grid grid-cols-6 gap-2 items-center">
                     <div class="col-span-4">
-                        <div class="text-md font-semibold text-slate-600">Model Prediksi Semester 3</div>
-                        <div class="text-xs font-normal text-slate-400">Akurasi Model Prediksi Saat Ini:
-                            <span class="font-semibold text-slate-500 ml-1">94%</span>
+                        <div class="col-span-4">
+                            <div class="text-md font-semibold text-slate-600">Model Prediksi Semester 3</div>
+                            <div class="text-xs font-normal text-slate-400">Skor F1 Model Prediksi Saat Ini:
+                                <span class="font-semibold text-slate-500 ml-1 latest-f1-score-sem-3">{{ latest_f1_score.3|floatformat:2|default:0 }}</span><span class="font-semibold text-slate-500">%</span>
+                            </div>
                         </div>
                     </div>
                     
                     <div class="col-span-2 justify-items-end">
                         <div class="items-center">
-                            <button type="button" class="px-3 py-2 text-xs font-medium justify-center text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center">
-                            <svg class="w-4 h-4 text-white me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.651 7.65a7.131 7.131 0 0 0-12.68 3.15M18.001 4v4h-4m-7.652 8.35a7.13 7.13 0 0 0 12.68-3.15M6 20v-4h4"/>
-                            </svg>  
-                            Training Model
-                            </button>
+                            <form method="post" action="{% url 'index' %}">
+                                {% csrf_token %}
+                                <input type="hidden" name="semester" value="3">
+                                <button type="submit" class="px-3 py-2 text-xs font-medium justify-center text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center">
+                                    <svg class="w-4 h-4 text-white me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.651 7.65a7.131 7.131 0 0 0-12.68 3.15M18.001 4v4h-4m-7.652 8.35a7.13 7.13 0 0 0 12.68-3.15M6 20v-4h4"/>
+                                    </svg>  
+                                Training Model
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -129,41 +202,51 @@
                 <div class="grid grid-cols-6 gap-2 items-center">
                     <div class="col-span-4">
                         <div class="text-md font-semibold text-slate-600">Model Prediksi Semester 4</div>
-                        <div class="text-xs font-normal text-slate-400">Akurasi Model Prediksi Saat Ini:
-                            <span class="font-semibold text-slate-500 ml-1">94%</span>
+                        <div class="text-xs font-normal text-slate-400">Skor F1 Model Prediksi Saat Ini:
+                            <span class="font-semibold text-slate-500 ml-1 latest-f1-score-sem-4">{{ latest_f1_score.4|floatformat:2|default:0 }}</span><span class="font-semibold text-slate-500">%</span>
                         </div>
                     </div>
                     
                     <div class="col-span-2 justify-items-end">
                         <div class="items-center">
-                            <button type="button" class="px-3 py-2 text-xs font-medium justify-center text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center">
-                            <svg class="w-4 h-4 text-white me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.651 7.65a7.131 7.131 0 0 0-12.68 3.15M18.001 4v4h-4m-7.652 8.35a7.13 7.13 0 0 0 12.68-3.15M6 20v-4h4"/>
-                            </svg>  
-                            Training Model
-                            </button>
+                            <form method="post" action="{% url 'index' %}">
+                                <input type="hidden" name="semester" value="4">
+                                {% csrf_token %}
+                                <button type="submit" class="px-3 py-2 text-xs font-medium justify-center text-white inline-flex items-center bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 rounded-lg text-center">
+                                    <svg class="w-4 h-4 text-white me-2" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                                        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.651 7.65a7.131 7.131 0 0 0-12.68 3.15M18.001 4v4h-4m-7.652 8.35a7.13 7.13 0 0 0 12.68-3.15M6 20v-4h4"/>
+                                    </svg>  
+                                Training Model
+                                </button>
+                            </form>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
+        {% comment %} Log retrain model {% endcomment %}
         <div class="bg-white rounded-lg shadow-md p-6 max-w-lg space-y-4 w-full">
             <div class="text-lg font-semibold text-slate-700">Riwayat Pembaruan Model</div>
-            <div class="bg-blue-50 border-blue-100 border-2 w-full p-4 rounded-lg inline-flex flex-row gap-4 items-center">
-                <svg class="w-7 h-7 text-green-600 col-end-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
-                    <path fill-rule="evenodd" d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm13.707-1.293a1 1 0 0 0-1.414-1.414L11 12.586l-1.793-1.793a1 1 0 0 0-1.414 1.414l2.5 2.5a1 1 0 0 0 1.414 0l4-4Z" clip-rule="evenodd"/>
-                </svg>
-                <div class="flex flex-col gap-0">
-                    <div class="text-md font-medium text-blue-600">26 November 2024 - 
-                        <span> 13:00 </span>
-                    </div>
-                    <div class="flex flex-row gap-2">
-                        <div class="text-sm font-normal text-slate-500">Model Semester 1</div>
-                        <div class="text-sm font-normal text-slate-300">●</div>
-                        <div class="text-sm font-normal text-slate-500">Akurasi Model: <span> 92% </span> </div>
+            {% if retrain_logs %}
+                {% for log in retrain_logs %}
+                <div class="bg-blue-50 border-blue-100 border-2 w-full p-4 rounded-lg inline-flex flex-row gap-4 items-center">
+                    <svg class="w-7 h-7 text-green-600 col-end-1" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 24 24">
+                        <path fill-rule="evenodd" d="M2 12C2 6.477 6.477 2 12 2s10 4.477 10 10-4.477 10-10 10S2 17.523 2 12Zm13.707-1.293a1 1 0 0 0-1.414-1.414L11 12.586l-1.793-1.793a1 1 0 0 0-1.414 1.414l2.5 2.5a1 1 0 0 0 1.414 0l4-4Z" clip-rule="evenodd"/>
+                    </svg>
+                    <div class="flex flex-col gap-0">
+                        <div class="text-md font-medium text-blue-600">Model Semester <span>{{ log.model_semester }}</spam></div>
+                        <div class="flex flex-row gap-2">
+                            <div class="text-sm font-normal text-slate-500">{{ log.retrained_date|date:"j F Y, h:i A" }}</spam></div>
+                            <div class="text-sm font-normal text-slate-300">●</div>
+                            <div class="text-sm font-normal text-slate-500">Skor F1: <span class="f1-score"> {{ log.f1_score|floatformat:2 }}</span>%</div>
+                        </div>
                     </div>
                 </div>
-            </div>
+                {% endfor %}
+            {% else %}
+                <div class="text-sm font-normal text-slate-500">Belum ada pembaruan model yang dilakukan</div>
+            {% endif %}
         </div>
     </div>
 </body>
