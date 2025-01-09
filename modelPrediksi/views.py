@@ -82,7 +82,7 @@ def modelPrediksi(request):
         mean_f1 = np.mean(f1_scores)
 
         # Ensure the directory exists
-        model_dir = 'webdemo/predictive-model'
+        model_dir = 'webdemo/predictive-models'
         os.makedirs(model_dir, exist_ok=True)
 
         # Save the model
