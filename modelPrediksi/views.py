@@ -16,7 +16,6 @@ import joblib
 
 def modelPrediksi(request):
     if request.method == 'POST':
-        
         semester = request.POST.get('semester')
         
         if semester == '2':
@@ -52,14 +51,12 @@ def modelPrediksi(request):
             }
             n_splits = 8
         else:
-            messages.error(request, 'Invalid semester')
+            messages.error(request, 'Semester tidak sesuai')
             return redirect('index')
 
-        # Ambil data training dari database
         X = pd.DataFrame(list(hasilUKMPPD.objects.values(*fields)))
         y = pd.Series(list(hasilUKMPPD.objects.values_list('hasil_ukmppd', flat=True)))
         
-        # Retraining model
         model = XGBClassifier(eval_metric='logloss', **params)
         kfold_cv = StratifiedKFold(n_splits=n_splits, shuffle=True, random_state=42)
         f1_scores = []
@@ -82,15 +79,11 @@ def modelPrediksi(request):
 
         mean_f1 = np.mean(f1_scores)
 
-        # Ensure the directory exists
         model_dir = 'webdemo/predictive-models'
         os.makedirs(model_dir, exist_ok=True)
-
-        # Save the model
         model_path = os.path.join(model_dir, f'final_sem_{semester}.pkl')
         joblib.dump(model, model_path)
 
-        # Update dataNilai objects
         with transaction.atomic():
             for nilai in nilaiMahasiswa.objects.filter(semester=semester):
                 update_data = {field: getattr(nilai, field) for field in fields}
@@ -105,20 +98,17 @@ def modelPrediksi(request):
                 nilai.solution = solution
                 nilai.save()
 
-        # Save retraining log
         RetrainLog.objects.create(model_semester=semester, f1_score=mean_f1)
 
         messages.success(request, f'Model Semester {semester} telah berhasil diperbarui')
         return redirect('index_prediksi')
 
-    # Get the latest retraining log entry for each semester
     latest_f1_score = {
         '2': RetrainLog.objects.filter(model_semester='2').order_by('-retrained_date').first(),
         '3': RetrainLog.objects.filter(model_semester='3').order_by('-retrained_date').first(),
         '4': RetrainLog.objects.filter(model_semester='4').order_by('-retrained_date').first(),
     }
 
-    # Extract the F1 scores
     latest_f1_score = {semester: log.f1_score if log else None for semester, log in latest_f1_score.items()}
 
     retrain_logs = RetrainLog.objects.all().order_by('-retrained_date')
