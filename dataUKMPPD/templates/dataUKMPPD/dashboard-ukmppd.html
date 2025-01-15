@@ -204,7 +204,7 @@
           <ul class="pr-3 inline-flex -space-x-px rtl:space-x-reverse text-sm h-8">
               {% if page_obj.has_previous %}
                   <li>
-                      <a href="?page={{ page_obj.previous_page_number }}" class="flex items-center justify-center px-1 h-7 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700">
+                      <a href="?page={{ page_obj.previous_page_number }}{% if clean_query %}&{{ clean_query }}{% endif %}" class="flex items-center justify-center px-1 h-7 ms-0 leading-tight text-gray-500 bg-white border border-gray-300 rounded-s-lg hover:bg-gray-100 hover:text-gray-700">
                           <svg class="w-6 h-6 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                               <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m14 8-4 4 4 4" />
                           </svg>
@@ -223,13 +223,13 @@
               {% for num in page_obj.paginator.page_range %}
                   {% if page_obj.number == num %}
                       <li>
-                          <a href="?page={{ num }}" aria-current="page" class="flex items-center justify-center px-3 h-7 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700">
+                          <a href="?page={{ num }}{% if clean_query %}&{{ clean_query }}{% endif %}" aria-current="page" class="flex items-center justify-center px-3 h-7 text-blue-600 border border-gray-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700">
                               {{ num }}
                           </a>
                       </li>
                   {% else %}
                       <li>
-                          <a href="?page={{ num }}" class="flex items-center justify-center px-3 h-7 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">
+                          <a href="?page={{ num }}{% if clean_query %}&{{ clean_query }}{% endif %}" class="flex items-center justify-center px-3 h-7 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">
                               {{ num }}
                           </a>
                       </li>
@@ -238,7 +238,7 @@
 
               {% if page_obj.has_next %}
                 <li>
-                    <a href="?page={{ page_obj.next_page_number }}" class="flex items-center justify-center px-1 h-7 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700">
+                    <a href="?page={{ page_obj.next_page_number }}{% if clean_query %}&{{ clean_query }}{% endif %}" class="flex items-center justify-center px-1 h-7 leading-tight text-gray-500 bg-white border border-gray-300 rounded-e-lg hover:bg-gray-100 hover:text-gray-700">
                         <svg class="w-6 h-6 text-gray-500" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m10 16 4-4-4-4" />
                         </svg>

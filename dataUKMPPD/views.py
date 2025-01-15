@@ -55,6 +55,11 @@ def upload_ukmppd(request):
     
     return render(request, 'dataUKMPPD/form-upload-ukmppd.html', {'form': form})
 
+def remove_param_ukmppd(query_params):
+    params = query_params.split('&')
+    filtered_params = [param for param in params if not param.startswith('page=')]
+    return '&'.join(filtered_params)
+
 def dashboardUKMPPD(request):
     #Search and filter
     dashboard = hasilUKMPPD.objects.all().order_by('nama_mahasiswa')
@@ -77,6 +82,9 @@ def dashboardUKMPPD(request):
         elif ukmppd_filter_status == 'Retake':
             dashboard = dashboard.filter(hasil_ukmppd = 0)  
     
+    query_params = request.GET.urlencode()
+    clean_query = remove_param_ukmppd(query_params)
+    
     #Pagination
     paginator = Paginator(dashboard, 10)
     page_number = request.GET.get('page')
@@ -96,6 +104,7 @@ def dashboardUKMPPD(request):
         'ukmppd_filter_status': ukmppd_filter_status,
         'ukmppd_lulus': ukmppd_lulus,
         'ukmppd_retake': ukmppd_retake,
+        'clean_query': clean_query
     } 
     
     return render(request, 'dataUKMPPD/dashboard-ukmppd.html', context)

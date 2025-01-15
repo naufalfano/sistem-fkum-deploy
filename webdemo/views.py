@@ -1,5 +1,4 @@
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse
 from django.contrib.auth import logout
 from django.shortcuts import redirect
 from django.core.paginator import Paginator
@@ -11,6 +10,11 @@ Tanpa pakai template (langsung views)
 def homepage(request):
     return HttpResponse("testing views django 123")
 '''
+def remove_param_nilai(query_params):
+    params = query_params.split('&')
+    filtered_params = [param for param in params if not param.startswith('page=')]
+    return '&'.join(filtered_params)
+
 def index(request):
     #Search and filter
     dashboard = nilaiMahasiswa.objects.all().order_by('nama_mahasiswa')
@@ -29,7 +33,10 @@ def index(request):
         if nilai_filter_status == 'Lulus':
             dashboard = dashboard.filter(hasil_ukmppd = 1)
         elif nilai_filter_status == 'Retake':
-            dashboard = dashboard.filter(hasil_ukmppd = 0)  
+            dashboard = dashboard.filter(hasil_ukmppd = 0)
+            
+    query_params = request.GET.urlencode()
+    clean_query = remove_param_nilai(query_params)
                     
     #Pagination
     paginator = Paginator(dashboard, 10)
@@ -51,6 +58,7 @@ def index(request):
         'nilai_filter_status': nilai_filter_status,
         'predict_lulus': predict_lulus,
         'predict_retake': predict_retake,
+        'clean_query': clean_query
     }
         
     return render(request, 'homepage.html', context)
