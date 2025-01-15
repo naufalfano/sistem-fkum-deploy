@@ -12,6 +12,7 @@ from imblearn.over_sampling import SMOTE
 from sklearn.metrics import f1_score
 from django.contrib import messages
 from django.db import transaction
+from django.core.paginator import Paginator
 import joblib
 
 def modelPrediksi(request):
@@ -112,9 +113,16 @@ def modelPrediksi(request):
     latest_f1_score = {semester: log.f1_score if log else None for semester, log in latest_f1_score.items()}
 
     retrain_logs = RetrainLog.objects.all().order_by('-retrained_date')
+    
+    #Pagination
+    paginator = Paginator(retrain_logs, 3)
+    page_number = request.GET.get('page')
+    page_obj = paginator.get_page(page_number)
+    
     context = {
         'retrain_logs': retrain_logs,
         'latest_f1_score': latest_f1_score,
+        'page_obj': page_obj
     }
     
     return render(request, 'modelPrediksi/dashboard-model.html', context)
