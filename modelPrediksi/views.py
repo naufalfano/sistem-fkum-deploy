@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from dataUKMPPD.models import hasilUKMPPD
 from dataNilai.models import nilaiMahasiswa
-from dataNilai.views import find_similar_case
+from dataNilai.views import evaluate_rules
 from .models import RetrainLog
 import numpy as np
 import pandas as pd
