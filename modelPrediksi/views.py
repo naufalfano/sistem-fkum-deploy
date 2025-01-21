@@ -93,7 +93,7 @@ def modelPrediksi(request):
                 solution = ""
                 if hasil_ukmppd == 0:
                     nilai_dict = {field: getattr(nilai, field) for field in fields}
-                    solution = find_similar_case(nilai_dict, semester)
+                    solution = evaluate_rules({**nilai_dict, 'semester': semester})
 
                 nilai.hasil_ukmppd = hasil_ukmppd
                 nilai.solution = solution
